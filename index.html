@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Invierno Frontenis Cortes</title>
+<meta name="description" content="III Torneo Local de Frontenis · Invierno 2027 · 8, 9 y 10 de enero · Frontón Retegui, Cortes. Marcad vuestra disponibilidad.">
+<meta name="theme-color" content="#123420">
+<!-- Vista previa al compartir por WhatsApp: las URL tienen que ser absolutas -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="III Torneo Local de Frontenis · Invierno 2027">
+<meta property="og:description" content="8, 9 y 10 de enero · Frontón Retegui, Cortes. Buscad vuestra pareja y marcad cuándo podéis jugar.">
+<meta property="og:url" content="https://frontenis-cortes.github.io/frontenis-invierno/">
+<meta property="og:image" content="https://frontenis-cortes.github.io/frontenis-invierno/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
+<style>
+:root{
+  --g-900:#0f2a1a; --g-800:#17402a; --g-700:#1f5535; --g-600:#2a6b45;
+  --yellow:#f2c618; --yellow-ink:#2a2200; --red-line:#c8282b;
+  --paper:#f1f3ee; --card:#ffffff; --ink:#14201a; --muted:#5d6b62; --line:#dde3dc;
+  --green:#1f9d63; --green-bg:#e3f6ec; --star:#b9850a; --star-bg:#fff3d1;
+  --red:#cf3b4b; --red-bg:#fde8eb; --blue-bg:#e8f0ff;
+  --shadow:0 1px 2px rgba(15,42,26,.06),0 8px 24px rgba(15,42,26,.08);
+  --r:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:980px;margin:0 auto;padding-left:16px;padding-right:16px}
+code{background:rgba(0,0,0,.06);border-radius:5px;padding:1px 5px;font-size:.92em}
+
+/* ---------- Cabecera ---------- */
+.hero{color:#fff;border-top:5px solid var(--red-line);border-bottom:5px solid var(--red-line);
+  background:radial-gradient(900px 340px at 90% -20%,rgba(242,198,24,.16),transparent 60%),linear-gradient(180deg,#123420 0%,#17402a 70%,#0f2a1a 100%)}
+.hero-inner{padding-top:18px;padding-bottom:18px}
+.kicker{display:flex;justify-content:space-between;gap:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.kicker .y{color:var(--yellow)}
+.hero h1{margin:12px 0 2px;font-size:clamp(15px,4vw,20px);font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+.hero h1 b{color:var(--yellow)}
+.hero .big{font-size:clamp(40px,12vw,76px);line-height:.95;font-weight:900;letter-spacing:-.01em;text-transform:uppercase}
+.hero .season{display:flex;align-items:center;gap:12px;margin-top:4px;color:var(--yellow);font-weight:800;font-size:clamp(22px,6vw,34px);text-transform:uppercase;letter-spacing:.04em}
+.hero .season i{flex:1;height:2px;background:var(--yellow);opacity:.8}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+@media (max-width:620px){.facts{grid-template-columns:repeat(2,1fr)}}
+.fact{background:rgba(0,0,0,.28);border-radius:10px;padding:9px 11px}
+.fact small{display:block;color:var(--yellow);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}
+.fact b{display:block;font-size:17px;margin-top:2px;line-height:1.15}
+.fact span{font-size:12.5px;opacity:.85}
+.hero-actions{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#06351b;border:0;border-radius:999px;padding:10px 16px;font-weight:700;text-decoration:none;font-size:14px}
+.btn-wa svg{width:18px;height:18px}
+.btn-line{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 15px;font-weight:600;font-size:14px}
+.poster{display:none;margin-top:14px;text-align:center}
+.poster.show{display:block}
+.poster img{max-width:100%;max-height:82vh;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+
+/* ---------- Pestañas ---------- */
+.tabs-bar{position:sticky;top:0;z-index:20;background:rgba(241,243,238,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:8px 0}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:0;background:transparent;padding:9px 14px;border-radius:10px;font-weight:600;color:var(--muted);font-size:15px;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--g-800);color:#fff}
+.tab.org{color:var(--star)}
+.tab.org[aria-selected="true"]{background:var(--yellow);color:var(--yellow-ink)}
+.tab .count{display:inline-block;min-width:20px;padding:0 6px;margin-left:4px;border-radius:999px;background:var(--line);color:var(--ink);font-size:12px;line-height:20px;text-align:center}
+.tab[aria-selected="true"] .count{background:rgba(255,255,255,.22);color:#fff}
+
+main{padding:18px 0 40px}
+section[hidden]{display:none}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
+.card h2{margin:0 0 4px;font-size:19px}
+.card h3{margin:0 0 8px;font-size:16px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 14px;line-height:1.45}
+.banner{border-radius:12px;padding:11px 14px;font-size:14px;line-height:1.45;margin-bottom:14px}
+.banner.warn{background:var(--star-bg);color:#5c3f08;border:1px solid #f0d58a}
+.banner.err{background:var(--red-bg);color:#7a1d2a;border:1px solid #f3b5bf}
+.banner.info{background:var(--blue-bg);color:#13306b;border:1px solid #c7d8fb}
+.banner.ok{background:var(--green-bg);color:#0f5a37;border:1px solid #a9e2c5}
+.banner.demo{background:#2b1a5c;color:#fff}
+
+/* ---------- Elegir pareja ---------- */
+.search{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:0 12px;margin-bottom:12px}
+.search input{border:0;padding:12px 0;outline:none;width:100%;font-size:16px;background:transparent}
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px}
+.pick{display:flex;align-items:center;gap:12px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;width:100%}
+.pick:hover{border-color:var(--g-600)}
+.pick .no{flex:0 0 34px;height:34px;border-radius:9px;background:var(--g-800);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.pick .who{flex:1;min-width:0;font-weight:600;line-height:1.3}
+.pick .who small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+.st-chip{flex:0 0 auto;font-size:12px;font-weight:700;border-radius:999px;padding:3px 9px}
+.st-chip.ok{background:var(--green-bg);color:var(--green)}
+.st-chip.pend{background:#eef0ec;color:var(--muted)}
+.mine-hl{border-color:var(--green);background:#f6fcf8}
+
+/* ---------- Formulario ---------- */
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.field .hint{font-weight:400;color:var(--muted)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.row2{grid-template-columns:1fr}}
+input[type=text],input[type=password],input[type=date],textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;background:#fff;font-size:16px;outline:none;transition:border-color .15s}
+input:focus,textarea:focus{border-color:var(--g-600)}
+textarea{min-height:76px;resize:vertical}
+.err-msg{color:var(--red);font-size:13px;margin-top:5px;display:none}
+.field.invalid input{border-color:var(--red)}
+.field.invalid .err-msg{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-weight:600;font-size:14px}
+.chip[aria-pressed="true"]{border-color:var(--g-800);background:var(--g-800);color:#fff}
+.pair-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.pair-head .no{display:inline-block;background:var(--yellow);color:var(--yellow-ink);font-weight:800;border-radius:8px;padding:2px 9px;margin-right:6px;font-size:15px}
+.pair-head h2{font-size:20px}
+
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted);margin:2px 0 12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:16px;height:16px;border-radius:5px;border:1.5px solid var(--line);display:inline-block}
+.sw.s1{background:var(--green-bg);border-color:var(--green)}
+.sw.s2{background:var(--star-bg);border-color:var(--star)}
+.day{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+.day-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.day-name{font-weight:800}
+.day-date{color:var(--muted);font-weight:500;margin-left:6px}
+.day-note{font-size:13px;color:var(--muted);margin:0 0 10px}
+.day-quick{display:flex;gap:6px}
+.mini{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;font-size:13px;font-weight:600;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px}
+.slot{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 8px;text-align:center;font-weight:600;font-size:14px;line-height:1.2;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .08s}
+.slot:active{transform:scale(.97)}
+.slot .st{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-top:3px}
+.slot.s1{background:var(--green-bg);border-color:var(--green)}
+.slot.s1 .st{color:var(--green)}
+.slot.s2{background:var(--star-bg);border-color:var(--star)}
+.slot.s2 .st{color:var(--star)}
+.slot:disabled{cursor:not-allowed;opacity:.6}
+
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
+.btn{border:0;border-radius:11px;padding:12px 18px;font-weight:700;font-size:15px}
+.btn.primary{background:var(--g-800);color:#fff}
+.btn.primary:disabled{opacity:.55}
+.btn.ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.btn.danger{background:#fff;border:1.5px solid #f3b5bf;color:var(--red)}
+.btn.small{padding:7px 12px;font-size:13px;border-radius:9px}
+.btn.yellow{background:var(--yellow);color:var(--yellow-ink)}
+.btn:disabled{cursor:not-allowed;opacity:.55}
+
+.done{text-align:center;padding:26px 18px}
+.done .bigicon{font-size:44px;line-height:1}
+.done h2{margin:10px 0 6px;font-size:22px}
+.linkbox{display:flex;gap:8px;margin:14px auto 6px;max-width:560px}
+.linkbox input{font-size:14px;color:var(--muted)}
+.done .actions{justify-content:center}
+
+/* ---------- Parejas ---------- */
+.progress{height:10px;background:#e3e8e1;border-radius:999px;overflow:hidden;margin:8px 0 2px}
+.progress i{display:block;height:100%;background:var(--green);border-radius:999px;transition:width .4s}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.pcard{background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:12px 14px 12px 56px;position:relative;min-height:62px}
+.pcard .no{position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:9px;background:var(--g-800);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.pcard .no.seed{background:var(--yellow);color:var(--yellow-ink)}
+.pcard .n{font-weight:700;font-size:15px;line-height:1.3}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:#eef0ec;color:var(--muted)}
+.tag.ok{background:var(--green-bg);color:var(--green)}
+.tag.seed{background:var(--star-bg);color:#5c3f08}
+.tag.mine{background:var(--blue-bg);color:#13306b}
+.pcard .notes{margin-top:8px;font-size:13px;background:var(--paper);border-radius:8px;padding:7px 9px;white-space:pre-wrap}
+.pcard .meta{margin-top:6px;font-size:12px;color:var(--muted)}
+.pcard .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.empty{text-align:center;color:var(--muted);padding:30px 10px}
+
+/* ---------- Panel del organizador ---------- */
+.pend-list{display:flex;flex-direction:column;gap:6px}
+.pend{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff}
+.pend b{font-size:14px}
+.pend .btn-wa{padding:6px 12px;font-size:13px;flex:0 0 auto}
+.matrix-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:#fff;max-height:70vh}
+table.matrix{border-collapse:separate;border-spacing:0;font-size:13px;min-width:100%}
+.matrix th,.matrix td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:6px 8px;text-align:center;white-space:nowrap}
+.matrix thead th{position:sticky;background:var(--g-800);color:#fff;z-index:2}
+.matrix thead tr:first-child th{top:0}
+.matrix thead tr:nth-child(2) th{top:31px;background:var(--g-700);font-weight:600}
+.matrix .pn{position:sticky;left:0;background:#fff;text-align:left;z-index:1;font-weight:600;max-width:240px;overflow:hidden;text-overflow:ellipsis}
+.matrix thead .pn{z-index:3;background:var(--g-900)}
+@media (max-width:560px){.matrix .pn{max-width:120px}}
+.matrix tr.pending td{color:#b3bcb5;background:#fafbf9}
+.matrix td.s1{background:var(--green-bg);color:var(--green);font-weight:700}
+.matrix td.s2{background:var(--star-bg);color:var(--star);font-weight:700}
+.matrix tfoot td{position:sticky;bottom:0;background:#f4f7f2;font-weight:700}
+.matrix tfoot .pn{z-index:3;background:#f4f7f2}
+.heat{display:inline-block;min-width:26px;border-radius:6px;padding:1px 6px;color:#fff}
+.slot-sum{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.ss{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
+.ss .h{display:flex;justify-content:space-between;font-weight:700;gap:8px}
+.ss .who{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+
+/* ---------- Ajustes ---------- */
+.cfg-day{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;background:#fbfcfa}
+.cfg-day .row3{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end}
+@media (max-width:560px){.cfg-day .row3{grid-template-columns:1fr 1fr}.cfg-day .row3 .btn{grid-column:1/-1}}
+.switch{display:flex;align-items:center;gap:10px;font-weight:600}
+.switch input{width:22px;height:22px}
+
+/* ---------- Reglas ---------- */
+.rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.rule{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.rule-h{background:var(--g-800);color:#fff;font-weight:700;padding:10px 14px}
+.rule-b{padding:4px 14px 12px;font-size:14px;line-height:1.5}
+.score{width:100%;border-collapse:collapse;font-size:14px}
+.score th,.score td{border-bottom:1px solid var(--line);padding:6px;text-align:left}
+
+/* ---------- Pie, modales, aviso ---------- */
+footer{text-align:center;padding:10px 16px 40px;color:var(--muted);font-size:13px}
+footer .lnk{background:none;border:0;color:var(--muted);text-decoration:underline;font-size:13px;padding:6px}
+.overlay{position:fixed;inset:0;background:rgba(15,42,26,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+.overlay.show{display:flex}
+.modal{background:#fff;border-radius:16px;max-width:420px;width:100%;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal h3{margin:0 0 8px}
+.modal p{color:var(--muted);font-size:14px;line-height:1.45;margin:0 0 14px}
+.modal .actions{justify-content:flex-end}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(30px);background:var(--g-900);color:#fff;padding:11px 16px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.err{background:var(--red)}
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#9aa6a0}
+.status-dot.on{background:#38d98a}
+.status-dot.off{background:#ff7b8a}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="kicker"><span>Cortes · Navarra</span><span class="y">Frontón Retegui</span></div>
+    <h1>III Torneo <b>local</b> de</h1>
+    <div class="big">Frontenis</div>
+    <div class="season"><span id="heroSeason">Invierno</span><i></i><span id="heroYear">2027</span></div>
+    <div class="facts" id="heroFacts"></div>
+    <div class="hero-actions">
+      <a class="btn-wa" id="shareTop" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.700-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2s.2-1.1.1-1.2l-.5-.3z"/></svg>
+        Compartir por WhatsApp
+      </a>
+      <button class="btn-line" id="posterBtn">Ver cartel</button>
+    </div>
+    <div class="poster" id="poster"><img src="cartel.jpg" alt="Cartel del III Torneo Local de Frontenis Invierno 2027: 8, 9 y 10 de enero, Frontón Retegui, Cortes" loading="lazy"></div>
+  </div>
+</header>
+
+<div class="tabs-bar">
+  <div class="wrap">
+    <nav class="tabs" id="tabs" role="tablist">
+      <button class="tab" role="tab" data-tab="disponibilidad">Disponibilidad</button>
+      <button class="tab" role="tab" data-tab="parejas">Parejas <span class="count" id="countTab">0</span></button>
+      <button class="tab" role="tab" data-tab="cuadrante">Cuadrante</button>
+      <button class="tab" role="tab" data-tab="reglas">Reglas</button>
+      <button class="tab org" role="tab" data-tab="panel" hidden>Panel</button>
+      <button class="tab org" role="tab" data-tab="ajustes" hidden>Ajustes</button>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="globalBanner"></div>
+  <section id="sec-disponibilidad"></section>
+  <section id="sec-parejas" hidden></section>
+  <section id="sec-cuadrante" hidden>
+    <div class="card" style="text-align:center;padding:30px 18px">
+      <div style="font-size:40px">🗓️</div>
+      <h2 style="margin-top:8px">El cuadrante se publicará aquí</h2>
+      <p class="sub" style="margin:6px auto 0;max-width:460px">Con la disponibilidad de todas las parejas, la organización montará los grupos y los horarios. Lo veréis en esta misma página, con el mismo enlace.</p>
+    </div>
+  </section>
+  <section id="sec-reglas" hidden></section>
+  <section id="sec-panel" hidden></section>
+  <section id="sec-ajustes" hidden></section>
+</main>
+
+<footer>
+  <div><span class="status-dot" id="statusDot"></span> <span id="statusText">Conectando…</span></div>
+  <div style="margin-top:6px"><button class="lnk" id="orgBtn">Modo organizador</button></div>
+</footer>
+
+<div class="overlay" id="pinOverlay">
+  <div class="modal">
+    <h3>Modo organizador</h3>
+    <p>Para ver la disponibilidad de todas las parejas, saber quién falta, añadir o corregir parejas y cambiar las franjas.</p>
+    <div class="field" id="pinField">
+      <input type="password" id="pinInput" placeholder="PIN del organizador" autocomplete="off">
+      <div class="err-msg">PIN incorrecto.</div>
+    </div>
+    <div class="actions">
+      <button class="btn ghost" data-close="pinOverlay">Cancelar</button>
+      <button class="btn primary" id="pinOk">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="confirmOverlay">
+  <div class="modal">
+    <h3 id="confirmTitle">¿Seguro?</h3>
+    <p id="confirmText"></p>
+    <div class="actions">
+      <button class="btn ghost" data-close="confirmOverlay">Cancelar</button>
+      <button class="btn danger" id="confirmOk">Sí</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Firebase: mismo proyecto que el verano (frontenis-cortes), otra ruta: frontenisInvierno -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+  window.FIREBASE_CONFIG = {
+    apiKey: "AIzaSyBpT6oVunAbhnxFvmE-CBaG8H3U9-XsbRM",
+    authDomain: "frontenis-cortes.firebaseapp.com",
+    databaseURL: "https://frontenis-cortes-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "frontenis-cortes",
+    storageBucket: "frontenis-cortes.firebasestorage.app",
+    messagingSenderId: "74077419357",
+    appId: "1:74077419357:web:741a4623f2462893595ab4"
+  };
+</script>
+
+<script>
+(function(){
+"use strict";
+
+/* ======================= Ajustes fijos ======================= */
+const DB_ROOT  = "frontenisInvierno";            // ruta en Firebase (no mezclar con frontenisCortes del verano)
+const PIN_HASH = "f0d7b906a1942ff8ae71e6026b6946fe9b4635630e6ead9741a4676c829e6bd7";                 // SHA-256 del PIN del organizador (el PIN no va en claro)
+const SITE_URL = "https://frontenis-cortes.github.io/frontenis-invierno/";
+
+/* Configuración por defecto: vale hasta que el organizador guarde la suya en «Ajustes».
+   Los id de día y de franja no se cambian nunca: las disponibilidades guardadas apuntan a ellos. */
+const DEFAULT_CONFIG = {
+  titulo: "III Torneo Local de Frontenis · Invierno 2027",
+  fechas: "8, 9 y 10 de enero",
+  lugar: "Frontón Retegui",
+  plazas: "36",
+  incluye: "2 comidas",
+  precio: "30 €",
+  fechaLimite: "",
+  abierta: true,
+  categorias: [],
+  aviso: "",
+  dias: [
+    { id:"d1", nombre:"Viernes", fecha:"8 de enero", nota:"Fase de grupos.", franjas:[
+      {id:"d1f1",hora:"15:00 – 18:00"},{id:"d1f2",hora:"18:00 – 21:00"},{id:"d1f3",hora:"21:00 – 00:00"},{id:"d1f4",hora:"00:00 – 02:00"}]},
+    { id:"d2", nombre:"Sábado", fecha:"9 de enero", nota:"Fase de grupos.", franjas:[
+      {id:"d2f1",hora:"08:00 – 11:00"},{id:"d2f2",hora:"11:00 – 14:00"},{id:"d2f3",hora:"16:00 – 19:00"},{id:"d2f4",hora:"19:00 – 22:00"},{id:"d2f5",hora:"22:00 – 02:00"}]},
+    { id:"d3", nombre:"Domingo", fecha:"10 de enero", nota:"Por la mañana, últimos partidos de grupos. Por la tarde, eliminatorias: hay que estar.", franjas:[
+      {id:"d3f1",hora:"08:00 – 11:00"},{id:"d3f2",hora:"11:00 – 14:00"}]}
+  ]
+};
+
+/* Listado entregado por la organización (hoja manuscrita). Se carga con «Ajustes → Cargar el listado».
+   Cada pareja puede corregir su nombre al marcar la disponibilidad. */
+const SEED = [
+  ["Unai Rupérez","Mikel Pascual"], ["Jorge Pascual","Saúl Cuairán"], ["Saúl Choleta","Juan Castán"],
+  ["Jon Cuadrado","Iñaki Tramullas"], ["Axel Guiral","Alberto Blasco"], ["Peio Astiz","Javier Ausejo"],
+  ["Fernando Miñes","César Miñes"], ["Alfredo Martín",""], ["Santi Marco","Jesús La Laguna"],
+  ["Raúl Pérez","Valeri Kirilov"], ["Juan Carlos Villafranca","Rubén Pepillo"], ["Andrés Continente","Juanjo Alonso"],
+  ["Joseba Guerrero","Álvaro Nines"], ["Natxo Segura","Makelele"], ["Sergio Aba","Eneko Ciriza"],
+  ["Juan Ignacio Aguirre","Ángel Mari Recarri"], ["Pablo Sánchez","Javier Juara"], ["José Javier","Alfonso Domínguez"],
+  ["Sergio Serrano","Eduardo Zapata"], ["Álvaro Sánchez","Óscar"], ["David Royo","Dani Baigorri"],
+  ["Lucía Lerín","Lucía Villafranca"], ["Carlos Madero","Imanol Madero"], ["Ringote",""],
+  ["Antonio Conejo","Ricardo Gimeno"], ["Mikel Manrique","Asier Agorain"], ["Yelko Cardonel","Iván Espeleta"],
+  ["Mikel Guiral","Rafa Choleta"], ["Enzo Recari","Iñaki Recari"], ["Barquero","Hugo García"],
+  ["Félix Belio","Cristian Carajete"], ["Víctor Marqués","Iosu Llorca"], ["Javier Borobia","Gonzalo Continente"],
+  ["Manolo García","Carmelo Catalán"], ["Chilin",""], ["Pirri",""]
+];
+const CABEZAS = { 2:1, 5:2, 31:3, 6:4 };   // n.º de pareja → cabeza de serie (1 Saúl-Jorge, 2 Axel-Julito, 3 Carajete-Félix, 4 Ausejo-Peio)
+
+/* ======================= Utilidades ======================= */
+const params = new URLSearchParams(location.search);
+const DEMO = params.has("demo");
+const LS_MINE = "fi_mis_parejas", LS_DEMO = "fi_demo_db", SS_ORG = "fi_org";
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm = s => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/\s+/g," ").trim();
+const uid = p => p + Math.random().toString(36).slice(2,8);
+const pad = n => String(n).padStart(2,"0");
+function lsGet(k,d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } }
+function lsSet(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+function ssGet(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
+function ssSet(k,v){ try{ v == null ? sessionStorage.removeItem(k) : sessionStorage.setItem(k,v); }catch(e){} }
+function fmtDate(iso){ if(!iso) return ""; const [y,m,d] = iso.split("-"); return d && m ? `${+d}/${+m}/${y}` : iso; }
+function fmtTs(ts){ if(!ts) return ""; const d = new Date(ts); return d.toLocaleDateString("es-ES",{day:"numeric",month:"short"}) + " " + d.toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"}); }
+function todayIso(){ const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset()*60000).toISOString().slice(0,10); }
+function baseUrl(){ return /^https?:$/.test(location.protocol) ? location.origin + location.pathname : SITE_URL; }
+function link(extra){ const p = new URLSearchParams(extra || {}); if(DEMO) p.set("demo","1"); const q = p.toString(); return baseUrl() + (q ? "?" + q : ""); }
+function wa(text){ return "https://wa.me/?text=" + encodeURIComponent(text); }
+async function sha256(s){ const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join(""); }
+function withTimeout(p, ms){ return Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("sin respuesta del servidor; revisa la conexión")), ms))]); }
+function errText(e){ return e && e.code === "PERMISSION_DENIED" ? "la base de datos lo ha rechazado (¿reglas de Firebase sin publicar?)" : (e && e.message) || String(e); }
+
+let toastT;
+function toast(msg, err){ const t = $("toast"); t.textContent = msg; t.className = "toast show" + (err ? " err" : ""); clearTimeout(toastT); toastT = setTimeout(()=> t.className = "toast", err ? 6000 : 2800); }
+
+function seedData(){
+  const out = {}, t0 = Date.UTC(2026, 10, 6);
+  SEED.forEach(([a,b], i) => {
+    const n = i + 1, p = { num:n, j1:a, j2:b, creado:t0 + n, actualizado:t0 + n };
+    if(CABEZAS[n]) p.cabeza = CABEZAS[n];
+    out["p" + pad(n)] = p;
+  });
+  return out;
+}
+
+/* ======================= Datos: Firebase o modo prueba ======================= */
+function makeFirebase(){
+  firebase.initializeApp(window.FIREBASE_CONFIG);
+  const db = firebase.database(), root = db.ref(DB_ROOT);
+  return {
+    onConfig(cb, err){ root.child("config").on("value", s => cb(s.val()), err); },
+    onParejas(cb, err){ root.child("parejas").on("value", s => cb(s.val() || {}), err); },
+    onConnected(cb){ db.ref(".info/connected").on("value", s => cb(!!s.val())); },
+    async savePareja(id, data){
+      if(id){ await root.child("parejas/" + id).set(data); return id; }
+      const r = root.child("parejas").push(); await r.set(data); return r.key;
+    },
+    deletePareja(id){ return root.child("parejas/" + id).remove(); },
+    saveConfig(c){ return root.child("config").set(c); },
+    async seed(data){
+      const cur = (await root.child("parejas").once("value")).val() || {};
+      const upd = {}; Object.keys(data).forEach(k => { if(!cur[k]) upd[k] = data[k]; });
+      if(Object.keys(upd).length) await root.child("parejas").update(upd);
+      return Object.keys(upd).length;
+    }
+  };
+}
+function makeLocal(){
+  const subs = { config:[], parejas:[] };
+  const read = () => lsGet(LS_DEMO, { config:null, parejas:{} });
+  const emit = () => { const d = read(); subs.config.forEach(f => f(d.config)); subs.parejas.forEach(f => f(d.parejas || {})); };
+  const write = fn => { const d = read(); fn(d); lsSet(LS_DEMO, d); setTimeout(emit, 0); };
+  window.addEventListener("storage", e => { if(e.key === LS_DEMO) emit(); });
+  return {
+    onConfig(cb){ subs.config.push(cb); setTimeout(()=>cb(read().config), 0); },
+    onParejas(cb){ subs.parejas.push(cb); setTimeout(()=>cb(read().parejas || {}), 0); },
+    onConnected(cb){ cb(true); },
+    async savePareja(id, data){ const k = id || uid("-demo"); write(d => { d.parejas = d.parejas || {}; d.parejas[k] = data; }); return k; },
+    async deletePareja(id){ write(d => { if(d.parejas) delete d.parejas[id]; }); },
+    async saveConfig(c){ write(d => { d.config = c; }); },
+    async seed(data){ let n = 0; write(d => { d.parejas = d.parejas || {}; Object.keys(data).forEach(k => { if(!d.parejas[k]){ d.parejas[k] = data[k]; n++; } }); }); return n; }
+  };
+}
+
+/* Firebase quita los arrays vacíos: se rellenan al leer */
+function fillConfig(c){
+  const base = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+  if(!c) return base;
+  const out = Object.assign(base, c);
+  out.categorias = Array.isArray(c.categorias) ? c.categorias.filter(Boolean) : [];
+  out.dias = (Array.isArray(c.dias) ? c.dias : []).filter(Boolean).map(d => ({ id:d.id, nombre:d.nombre || "", fecha:d.fecha || "", nota:d.nota || "", franjas:(Array.isArray(d.franjas) ? d.franjas : []).filter(Boolean) }));
+  return out;
+}
+
+/* ======================= Estado ======================= */
+const S = {
+  config: fillConfig(null), configFromDb:false,
+  parejas: {}, loaded:false, readError:null, connected:null,
+  org: ssGet(SS_ORG) === "1",
+  tab: "disponibilidad",
+  selId: null, isNew:false, done: null,
+  form: null, pick:"", search: ""
+};
+function mine(){ return lsGet(LS_MINE, []).filter(id => S.parejas[id]); }
+function addMine(id){ const m = lsGet(LS_MINE, []).filter(x => x !== id); m.unshift(id); lsSet(LS_MINE, m.slice(0,3)); }
+function delMine(id){ lsSet(LS_MINE, lsGet(LS_MINE, []).filter(x => x !== id)); }
+function isOpen(){ const c = S.config; if(c.abierta === false) return false; if(c.fechaLimite && todayIso() > c.fechaLimite) return false; return true; }
+function canEdit(){ return isOpen() || S.org; }
+function allSlots(){ const out = []; S.config.dias.forEach(d => d.franjas.forEach(f => out.push({ dia:d, f }))); return out; }
+function validSlotIds(){ return new Set(allSlots().map(x => x.f.id)); }
+function countDisp(p){ const v = validSlotIds(); return Object.entries(p.disp || {}).filter(([k,x]) => x > 0 && v.has(k)).length; }
+function responded(p){ return !!p.respondido && countDisp(p) > 0; }
+function names(p){ return `${p.j1 || "?"} – ${p.j2 || "(falta compañero)"}`; }
+function sortedParejas(){ return Object.entries(S.parejas).map(([id,p]) => Object.assign({ id }, p)).sort((a,b) => (a.num || 999) - (b.num || 999) || (a.creado||0) - (b.creado||0)); }
+function nextNum(){ return Math.max(0, ...Object.values(S.parejas).map(p => p.num || 0)) + 1; }
+
+/* ======================= Cabecera y pestañas ======================= */
+function renderHero(){
+  const c = S.config, ps = Object.values(S.parejas), n = ps.length, r = ps.filter(responded).length;
+  document.title = c.titulo || "Frontenis Cortes";
+  const m = /·\s*([^\d·]+?)\s*(\d{4})?\s*$/.exec(c.titulo || "");
+  $("heroSeason").textContent = (m && m[1]) || "Invierno";
+  $("heroYear").textContent = (m && m[2]) || "";
+  $("heroFacts").innerHTML = [
+    ["Fechas", c.fechas, ""], ["Lugar", c.lugar, "Cortes"],
+    ["Parejas", n ? `${n}${c.plazas ? " / " + c.plazas : ""}` : (c.plazas || "—"), n ? `${r} con disponibilidad` : "máximo"],
+    ["Inscripción", c.precio, ["por pareja", c.incluye && "incluye " + c.incluye].filter(Boolean).join(" · ")]
+  ].map(([k,v,s]) => `<div class="fact"><small>${esc(k)}</small><b>${esc(v || "—")}</b>${s ? `<span>${esc(s)}</span>` : ""}</div>`).join("");
+  $("shareTop").href = wa(`🏆 ${c.titulo}\n📅 ${c.fechas} · ${c.lugar}\n\nBuscad vuestra pareja y marcad cuándo podéis jugar 👇\n${link()}`);
+  $("countTab").textContent = n;
+}
+const TABS = ["disponibilidad","parejas","cuadrante","reglas","panel","ajustes"];
+function setTab(t){
+  if((t === "panel" || t === "ajustes") && !S.org) t = "disponibilidad";
+  S.tab = t;
+  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t ? "true" : "false"));
+  TABS.forEach(k => $("sec-" + k).hidden = k !== t);
+  if(t === "disponibilidad") renderMain();
+  if(t === "parejas") renderParejas();
+  if(t === "panel") renderPanel();
+  if(t === "ajustes") renderAjustes();
+  if(t === "reglas") renderReglas();
+}
+function renderOrgUi(){
+  document.querySelectorAll(".tab.org").forEach(b => b.hidden = !S.org);
+  $("orgBtn").textContent = S.org ? "Salir del modo organizador" : "Modo organizador";
+}
+function renderBanner(){
+  let h = "";
+  if(DEMO) h += `<div class="banner demo">🧪 <b>Modo prueba</b>: lo que hagas se guarda solo en este navegador, no en la base de datos del torneo.</div>`;
+  if(S.readError) h += `<div class="banner err"><b>No se puede leer la base de datos.</b> Si eres el organizador: falta publicar las reglas de Firebase con la ruta <code>${DB_ROOT}</code>.</div>`;
+  if(S.config.aviso) h += `<div class="banner info">📣 ${esc(S.config.aviso)}</div>`;
+  $("globalBanner").innerHTML = h;
+}
+function renderStatus(){
+  const dot = $("statusDot"), txt = $("statusText");
+  if(DEMO){ dot.className = "status-dot on"; txt.textContent = "Modo prueba (sin base de datos)"; return; }
+  if(S.connected === null){ dot.className = "status-dot"; txt.textContent = "Conectando…"; return; }
+  dot.className = "status-dot " + (S.connected ? "on" : "off");
+  txt.textContent = S.connected ? "Conectado: los cambios se ven al momento" : "Sin conexión: se enviará al recuperarla";
+}
+$("posterBtn").onclick = () => { const p = $("poster"), on = !p.classList.contains("show"); p.classList.toggle("show", on); $("posterBtn").textContent = on ? "Ocultar cartel" : "Ver cartel"; };
+
+/* ======================= Disponibilidad: elegir pareja ======================= */
+$("sec-disponibilidad").addEventListener("click", e => { const b = e.target.closest("[data-pick]"); if(b) startForm(b.dataset.pick); });
+function renderMain(){
+  const sec = $("sec-disponibilidad");
+  if(S.done){ sec.innerHTML = doneHtml(); bindDone(); return; }
+  if(S.selId || S.isNew){ renderForm(); return; }
+  const my = mine();
+  let h = `<div class="card"><h2>Marcad vuestra disponibilidad</h2>
+    <p class="sub">Buscad vuestra pareja y marcad las franjas en las que <b>podéis jugar los dos</b>. Con eso se montan los grupos y los horarios. Basta con que lo haga uno de los dos.</p>`;
+  if(!isOpen()) h += `<div class="banner err">El plazo para marcar la disponibilidad está cerrado. Si necesitáis cambiar algo, hablad con la organización.</div>`;
+  else if(S.config.fechaLimite) h += `<div class="banner warn">Tenéis hasta el <b>${esc(fmtDate(S.config.fechaLimite))}</b>.</div>`;
+  if(my.length) h += `<div class="picks" style="margin-bottom:12px">${my.map(id => pickHtml(Object.assign({ id }, S.parejas[id]), true)).join("")}</div>`;
+  h += `<div class="search"><span aria-hidden="true">🔎</span><input type="text" id="pickSearch" placeholder="Busca tu nombre o el de tu compañero…" value="${esc(S.pick)}" autocomplete="off"></div>
+    <div id="pickList"></div>`;
+  if(S.org) h += `<div class="actions" style="margin-top:12px"><button class="btn yellow small" id="newPair">+ Añadir pareja</button></div>`;
+  h += `</div>`;
+  sec.innerHTML = h;
+  renderPickList();
+  $("pickSearch").addEventListener("input", e => { S.pick = e.target.value; renderPickList(); });
+  const np = $("newPair"); if(np) np.onclick = () => startForm(null);
+}
+function pickHtml(p, isMine){
+  const ok = responded(p);
+  return `<button class="pick${isMine ? " mine-hl" : ""}" data-pick="${esc(p.id)}"><span class="no">${p.num || "—"}</span>
+    <span class="who">${esc(names(p))}${isMine ? `<small>Vuestra pareja en este móvil</small>` : p.cabeza ? `<small>Cabeza de serie ${p.cabeza}</small>` : ""}</span>
+    <span class="st-chip ${ok ? "ok" : "pend"}">${ok ? "✓ Hecho" : "Pendiente"}</span></button>`;
+}
+function renderPickList(){
+  const box = $("pickList"); if(!box) return;
+  if(!S.loaded){ box.innerHTML = `<div class="empty">Cargando parejas…</div>`; return; }
+  const all = sortedParejas();
+  if(!all.length){ box.innerHTML = `<div class="empty">Todavía no está cargado el listado de parejas.${S.org ? " Cárgalo desde <b>Ajustes</b>." : ""}</div>`; return; }
+  const q = norm(S.pick);
+  const list = all.filter(p => !q || norm(`${p.num} ${p.j1} ${p.j2}`).includes(q));
+  box.innerHTML = list.length ? `<div class="picks">${list.map(p => pickHtml(p, false)).join("")}</div>`
+    : `<div class="empty">No encontramos «${esc(S.pick)}». Prueba solo con el nombre o el apellido. Si no estáis en la lista, avisad a la organización.</div>`;
+}
+
+/* ======================= Disponibilidad: formulario de una pareja ======================= */
+const STATE_TXT = ["No podemos", "✓ Podemos", "★ Mejor"];
+function startForm(id){
+  if(id && !S.parejas[id]){ toast("No encontramos esa pareja (puede que se haya borrado).", true); return; }
+  const p = id ? S.parejas[id] : {};
+  S.done = null; S.selId = id; S.isNew = !id;
+  S.form = { j1:p.j1 || "", j2:p.j2 || "", categoria:p.categoria || "", disp:Object.assign({}, p.disp || {}), notas:p.notas || "" };
+  history.replaceState(null, "", id ? link({ pareja:id }) : link());
+  setTab("disponibilidad"); window.scrollTo({ top:0 });
+}
+function closeForm(){ S.selId = null; S.isNew = false; S.form = null; history.replaceState(null, "", link()); renderMain(); }
+function renderForm(){
+  const sec = $("sec-disponibilidad"), c = S.config, f = S.form, p = S.selId ? S.parejas[S.selId] : null, open = canEdit();
+  if(S.selId && !p){ closeForm(); toast("Esa pareja ya no está en la lista.", true); return; }
+  const dis = open ? "" : "disabled";
+  let h = `<div class="card"><div class="pair-head"><div>
+      <h2>${p ? `<span class="no">${p.num || "—"}</span>${esc(names(p))}` : "Nueva pareja"}</h2>
+      ${p && p.cabeza ? `<p class="sub" style="margin:4px 0 0">Cabeza de serie ${p.cabeza}</p>` : ""}</div>
+      <button class="btn ghost small" id="backBtn">${p ? "No somos nosotros" : "Cancelar"}</button></div>`;
+  if(p && responded(p)) h += `<div class="banner ok">Ya enviasteis la disponibilidad (${esc(fmtTs(p.respondido))}). Podéis cambiarla y volver a guardar.</div>`;
+  if(!open) h += `<div class="banner err">El plazo está cerrado. Si necesitáis cambiar algo, hablad con la organización.</div>`;
+  h += `<div class="row2">
+      <div class="field" id="fj1Field"><label for="fJ1">Jugador 1</label>
+        <input type="text" id="fJ1" maxlength="40" value="${esc(f.j1)}" placeholder="Nombre y apellido" ${dis}><div class="err-msg">Pon el nombre del jugador 1.</div></div>
+      <div class="field" id="fj2Field"><label for="fJ2">Jugador 2</label>
+        <input type="text" id="fJ2" maxlength="40" value="${esc(f.j2)}" placeholder="${p && !p.j2 ? "Falta: poned aquí el compañero" : "Nombre y apellido"}" ${dis}><div class="err-msg">Falta el nombre del compañero.</div></div>
+    </div>
+    ${p ? `<p class="sub" style="margin-top:-6px">Si algún nombre está mal escrito, corregidlo aquí.</p>` : ""}`;
+  if(c.categorias.length){
+    h += `<div class="field" id="fCatField"><label>Categoría</label><div class="chips">` +
+      c.categorias.map(cat => `<button type="button" class="chip" data-cat="${esc(cat)}" aria-pressed="${f.categoria === cat}" ${dis}>${esc(cat)}</button>`).join("") +
+      `</div><div class="err-msg">Elegid una categoría.</div></div>`;
+  }
+  h += `<div class="field" id="fDispField"><label>¿Cuándo podéis jugar los dos?</label>
+      <div class="legend"><span><i class="sw"></i>No podemos</span><span><i class="sw s1"></i>Podemos</span><span><i class="sw s2"></i>Mejor (preferida)</span><span>· Toca para cambiar</span></div>
+      <div id="dispGrid">${dispGridHtml(dis)}</div>
+      <div class="err-msg">Marcad al menos una franja en la que podáis jugar.</div></div>
+    <div class="field"><label for="fNotas">Observaciones <span class="hint">(opcional)</span></label>
+      <textarea id="fNotas" maxlength="300" placeholder="Ej.: el sábado no llegamos antes de las 10; uno trabaja el viernes hasta las 20:00…" ${dis}>${esc(f.notas)}</textarea></div>
+    <div class="actions">
+      <button class="btn primary" id="submitBtn" ${dis}>${p && responded(p) ? "Guardar cambios" : "Enviar disponibilidad"}</button>
+      ${p && S.org ? `<button class="btn danger" id="deletePairBtn">Borrar pareja</button>` : ""}
+    </div></div>`;
+  sec.innerHTML = h;
+  bindForm();
+}
+function dispGridHtml(dis){
+  const c = S.config, f = S.form;
+  if(!c.dias.length) return `<div class="empty">La organización todavía no ha publicado las franjas.</div>`;
+  return c.dias.map(d => `
+    <div class="day">
+      <div class="day-head"><div><span class="day-name">${esc(d.nombre)}</span><span class="day-date">${esc(d.fecha)}</span></div>
+        <div class="day-quick"><button type="button" class="mini" data-all="${esc(d.id)}" ${dis}>Todo</button><button type="button" class="mini" data-none="${esc(d.id)}" ${dis}>Nada</button></div></div>
+      ${d.nota ? `<p class="day-note">${esc(d.nota)}</p>` : ""}
+      <div class="slots">${d.franjas.map(fr => { const s = f.disp[fr.id] || 0; return `<button type="button" class="slot s${s}" data-slot="${esc(fr.id)}" ${dis}>${esc(fr.hora)}<span class="st">${STATE_TXT[s]}</span></button>`; }).join("")}</div>
+    </div>`).join("");
+}
+function bindForm(){
+  const sec = $("sec-disponibilidad"), f = S.form;
+  [["fJ1","j1"],["fJ2","j2"],["fNotas","notas"]].forEach(([id,key]) => { const el = $(id); el.addEventListener("input", () => { f[key] = el.value; const fl = el.closest(".field"); if(fl) fl.classList.remove("invalid"); }); });
+  sec.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => {
+    f.categoria = b.dataset.cat;
+    sec.querySelectorAll("[data-cat]").forEach(x => x.setAttribute("aria-pressed", x.dataset.cat === f.categoria));
+    $("fCatField").classList.remove("invalid");
+  });
+  $("dispGrid").addEventListener("click", e => {
+    const slot = e.target.closest("[data-slot]"), all = e.target.closest("[data-all]"), none = e.target.closest("[data-none]");
+    if(slot){ const id = slot.dataset.slot; const s = ((f.disp[id] || 0) + 1) % 3; if(s) f.disp[id] = s; else delete f.disp[id]; paintSlot(slot, s); }
+    else if(all || none){
+      const d = S.config.dias.find(x => x.id === (all ? all.dataset.all : none.dataset.none));
+      d.franjas.forEach(fr => { if(all){ if(!f.disp[fr.id]) f.disp[fr.id] = 1; } else delete f.disp[fr.id]; });
+      $("dispGrid").querySelectorAll("[data-slot]").forEach(el => paintSlot(el, f.disp[el.dataset.slot] || 0));
+    } else return;
+    $("fDispField").classList.remove("invalid");
+  });
+  $("backBtn").onclick = closeForm;
+  const del = $("deletePairBtn"); if(del) del.onclick = () => askDelete(S.selId);
+  $("submitBtn").onclick = submit;
+}
+function paintSlot(el, s){ el.className = "slot s" + s; el.querySelector(".st").textContent = STATE_TXT[s]; }
+async function submit(){
+  const f = S.form, c = S.config;
+  const j1 = f.j1.trim(), j2 = f.j2.trim(), valid = validSlotIds();
+  const disp = {}; Object.entries(f.disp).forEach(([k,v]) => { if(v > 0 && valid.has(k)) disp[k] = v; });
+  let ok = true;
+  if(!j1){ $("fj1Field").classList.add("invalid"); ok = false; }
+  if(!j2){ $("fj2Field").classList.add("invalid"); ok = false; }
+  if(c.categorias.length && !c.categorias.includes(f.categoria)){ $("fCatField").classList.add("invalid"); ok = false; }
+  if(!Object.keys(disp).length){ $("fDispField").classList.add("invalid"); ok = false; }
+  if(!ok){ const first = document.querySelector(".field.invalid"); if(first) first.scrollIntoView({ behavior:"smooth", block:"center" }); return; }
+
+  const prev = S.selId ? S.parejas[S.selId] : null, now = Date.now();
+  const data = { num:(prev && prev.num) || nextNum(), j1, j2, disp, notas:f.notas.trim(), creado:(prev && prev.creado) || now, actualizado:now, respondido:now };
+  if(prev && prev.cabeza) data.cabeza = prev.cabeza;
+  if(c.categorias.length) data.categoria = f.categoria;
+  const btn = $("submitBtn"); btn.disabled = true; btn.textContent = "Guardando…";
+  try{
+    const wasEdit = !!(prev && responded(prev)), byOrgForOthers = S.org && S.isNew;
+    const id = await withTimeout(backend.savePareja(S.selId, data), 15000);
+    if(!byOrgForOthers) addMine(id);
+    S.done = { id, wasEdit, nombre: `${j1} – ${j2}`, n: countDisp(data) };
+    S.selId = null; S.isNew = false; S.form = null;
+    history.replaceState(null, "", link());
+    renderMain(); renderHero(); window.scrollTo({ top:0, behavior:"smooth" });
+  }catch(e){
+    btn.disabled = false; btn.textContent = "Enviar disponibilidad";
+    toast("No se ha podido guardar: " + errText(e), true);
+  }
+}
+function doneHtml(){
+  const d = S.done, l = link({ pareja: d.id });
+  return `<div class="card done">
+    <div class="bigicon">${d.wasEdit ? "✏️" : "🎉"}</div>
+    <h2>${d.wasEdit ? "Cambios guardados" : "¡Disponibilidad enviada!"}</h2>
+    <p class="sub" style="margin:0 auto;max-width:480px"><b>${esc(d.nombre)}</b>: ${d.n} franja${d.n === 1 ? "" : "s"} marcada${d.n === 1 ? "" : "s"}. Desde este móvil podéis cambiarla cuando queráis. Desde otro móvil, con este enlace:</p>
+    <div class="linkbox"><input type="text" id="editLink" readonly value="${esc(l)}"><button class="btn ghost small" id="copyLink">Copiar</button></div>
+    <div class="actions" style="margin-top:14px">
+      <a class="btn-wa" href="${esc(wa("Nuestra disponibilidad para el torneo de frontenis (para verla o cambiarla):\n" + l))}" target="_blank" rel="noopener">Mandárselo al compañero</a>
+      <button class="btn ghost" id="backList">Volver a la lista</button>
+    </div></div>`;
+}
+function bindDone(){
+  $("copyLink").onclick = async () => {
+    const inp = $("editLink");
+    try{ await navigator.clipboard.writeText(inp.value); toast("Enlace copiado"); }
+    catch(e){ inp.select(); try{ document.execCommand("copy"); toast("Enlace copiado"); }catch(_){ toast("Mantén pulsado el enlace para copiarlo"); } }
+  };
+  $("backList").onclick = () => { S.done = null; renderMain(); };
+}
+
+/* Confirmaciones dentro de la página (el confirm() nativo falla en el navegador de WhatsApp) */
+let confirmFn = null;
+function ask(title, text, okLabel, fn){ $("confirmTitle").textContent = title; $("confirmText").textContent = text; $("confirmOk").textContent = okLabel; confirmFn = fn; $("confirmOverlay").classList.add("show"); }
+$("confirmOk").onclick = () => { $("confirmOverlay").classList.remove("show"); const fn = confirmFn; confirmFn = null; if(fn) fn(); };
+function askDelete(id){
+  const p = S.parejas[id]; if(!p) return;
+  ask("¿Borrar la pareja?", `Se borrará la pareja ${p.num || ""} (${names(p)}) con su disponibilidad. No se puede deshacer.`, "Sí, borrar", async () => {
+    try{ await withTimeout(backend.deletePareja(id), 15000); delMine(id); if(S.selId === id) closeForm(); toast("Pareja borrada"); }
+    catch(e){ toast("No se ha podido borrar: " + errText(e), true); }
+  });
+}
+function askClear(id){
+  const p = S.parejas[id]; if(!p) return;
+  ask("¿Vaciar su disponibilidad?", `La pareja ${p.num || ""} (${names(p)}) volverá a salir como pendiente. Sus nombres se mantienen.`, "Sí, vaciar", async () => {
+    const data = Object.assign({}, p, { actualizado:Date.now() }); delete data.respondido; delete data.disp;
+    try{ await withTimeout(backend.savePareja(id, data), 15000); toast("Disponibilidad vaciada"); }
+    catch(e){ toast("No se ha podido guardar: " + errText(e), true); }
+  });
+}
+
+/* ======================= Parejas ======================= */
+function parejaCard(p, my){
+  const ok = responded(p);
+  return `<div class="pcard"><span class="no${p.cabeza ? " seed" : ""}">${p.num || "—"}</span>
+    <div class="n">${esc(p.j1 || "?")}<br>${p.j2 ? esc(p.j2) : `<span style="color:var(--red)">Falta compañero</span>`}</div>
+    <div class="tags">${p.cabeza ? `<span class="tag seed">Cabeza de serie ${p.cabeza}</span>` : ""}<span class="tag ${ok ? "ok" : ""}">${ok ? "✓ Disponibilidad enviada" : "Pendiente"}</span>${my.has(p.id) ? `<span class="tag mine">Vuestra</span>` : ""}${p.categoria ? `<span class="tag">${esc(p.categoria)}</span>` : ""}</div>
+    ${S.org && p.notas ? `<div class="notes">${esc(p.notas)}</div>` : ""}
+    ${S.org && p.respondido ? `<div class="meta">Enviada ${esc(fmtTs(p.respondido))} · ${countDisp(p)} franjas</div>` : ""}
+    ${S.org ? `<div class="acts"><button class="btn ghost small" data-edit="${esc(p.id)}">Editar</button>${ok ? `<button class="btn ghost small" data-clear="${esc(p.id)}">Vaciar</button>` : ""}<button class="btn danger small" data-del="${esc(p.id)}">Borrar</button></div>` : ""}
+  </div>`;
+}
+function renderParejas(){
+  const sec = $("sec-parejas");
+  if(!S.loaded){ sec.innerHTML = `<div class="empty">Cargando…</div>`; return; }
+  const all = sortedParejas(), r = all.filter(responded).length;
+  if(!all.length){ sec.innerHTML = `<div class="card empty">Todavía no está cargado el listado de parejas.</div>`; return; }
+  sec.innerHTML = `<div class="card"><h2>${all.length} parejas</h2>
+      <p class="sub" style="margin:0">${r} de ${all.length} ya han marcado su disponibilidad.</p>
+      <div class="progress"><i style="width:${Math.round(100 * r / all.length)}%"></i></div></div>
+    <div class="search"><span aria-hidden="true">🔎</span><input type="text" id="searchInput" placeholder="Buscar pareja o jugador…" value="${esc(S.search)}" autocomplete="off"></div>
+    <div id="parejasList"></div>`;
+  renderParejasList();
+  $("searchInput").addEventListener("input", e => { S.search = e.target.value; renderParejasList(); });
+}
+function renderParejasList(){
+  const box = $("parejasList"); if(!box) return;
+  const my = new Set(mine()), q = norm(S.search);
+  const list = sortedParejas().filter(p => !q || norm(`${p.num} ${p.j1} ${p.j2}`).includes(q));
+  box.innerHTML = list.length ? `<div class="list">${list.map(p => parejaCard(p, my)).join("")}</div>` : `<div class="empty">Nada coincide con «${esc(S.search)}».</div>`;
+  box.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => startForm(b.dataset.edit));
+  box.querySelectorAll("[data-del]").forEach(b => b.onclick = () => askDelete(b.dataset.del));
+  box.querySelectorAll("[data-clear]").forEach(b => b.onclick = () => askClear(b.dataset.clear));
+}
+
+/* ======================= Panel (organizador) ======================= */
+function heatColor(n, max){ if(!n) return "#b8c2bb"; const t = max ? n / max : 0; return t > .66 ? "#1f9d63" : t > .33 ? "#2a6b45" : "#b9850a"; }
+function renderPanel(){
+  const sec = $("sec-panel"), all = sortedParejas(), slots = allSlots();
+  if(!all.length){ sec.innerHTML = `<div class="card empty">No hay parejas. Carga el listado desde <b>Ajustes</b>.</div>`; return; }
+  const done = all.filter(responded), pend = all.filter(p => !responded(p));
+  const counts = slots.map(s => done.filter(p => (p.disp || {})[s.f.id] > 0).length), max = Math.max(...counts, 0);
+  let h = `<div class="card"><div class="pair-head"><div><h2>${done.length} de ${all.length} parejas han respondido</h2>
+      <p class="sub" style="margin:2px 0 0">✓ puede · ★ mejor. Esta pestaña solo la ve el organizador.</p></div>
+      <button class="btn primary small" id="csvBtn">Descargar Excel (CSV)</button></div>
+      <div class="progress"><i style="width:${Math.round(100 * done.length / all.length)}%"></i></div></div>`;
+  if(pend.length){
+    h += `<div class="card"><h3>Faltan ${pend.length}</h3><p class="sub">El botón abre WhatsApp con un mensaje y el enlace directo a su pareja: solo tienes que elegir a quién mandarlo.</p><div class="pend-list">` +
+      pend.map(p => `<div class="pend"><b>${p.num || "—"}. ${esc(names(p))}</b><a class="btn-wa" target="_blank" rel="noopener" href="${esc(wa(`Hola 👋 Para el ${S.config.titulo} (${S.config.fechas}) nos falta vuestra disponibilidad. Marcadla aquí, es un minuto:\n${link({ pareja:p.id })}`))}">Pedir</a></div>`).join("") +
+      `</div></div>`;
+  }
+  const dayHead = S.config.dias.map(d => `<th colspan="${d.franjas.length || 1}">${esc(d.nombre)} ${esc(d.fecha)}</th>`).join("");
+  const slotHead = S.config.dias.map(d => d.franjas.length ? d.franjas.map(f => `<th>${esc(f.hora)}</th>`).join("") : "<th>—</th>").join("");
+  const row = p => `<tr class="${responded(p) ? "" : "pending"}"><td class="pn" title="${esc(names(p))}">${p.num || "—"}. ${esc(names(p))}</td>` +
+    S.config.dias.map(d => d.franjas.length ? d.franjas.map(f => { const v = (p.disp || {})[f.id] || 0; return `<td class="s${v}">${v === 2 ? "★" : v === 1 ? "✓" : ""}</td>`; }).join("") : "<td></td>").join("") + `</tr>`;
+  let i = 0;
+  const foot = S.config.dias.map(d => d.franjas.length ? d.franjas.map(() => { const n = counts[i++]; return `<td><span class="heat" style="background:${heatColor(n,max)}">${n}</span></td>`; }).join("") : "<td></td>").join("");
+  h += `<div class="matrix-wrap"><table class="matrix"><thead><tr><th class="pn" rowspan="2">Pareja</th>${dayHead}</tr><tr>${slotHead}</tr></thead>
+    <tbody>${done.map(row).join("")}${pend.map(row).join("")}</tbody>
+    <tfoot><tr><td class="pn">Pueden (${done.length})</td>${foot}</tr></tfoot></table></div>`;
+  h += `<h3 style="margin:22px 0 10px">Quién puede en cada franja</h3><div class="slot-sum">` +
+    slots.map((s, k) => {
+      const pref = done.filter(p => (p.disp || {})[s.f.id] === 2), can = done.filter(p => (p.disp || {})[s.f.id] === 1);
+      return `<div class="ss"><div class="h"><span>${esc(s.dia.nombre)} · ${esc(s.f.hora)}</span><span class="heat" style="background:${heatColor(counts[k],max)}">${counts[k]}</span></div>
+        <div class="who">${pref.map(p => `★ ${p.num}. ${esc(p.j1)}`).concat(can.map(p => `${p.num}. ${esc(p.j1)}`)).join(" · ") || "Nadie todavía"}</div></div>`;
+    }).join("") + `</div>`;
+  const withNotes = done.filter(p => p.notas);
+  if(withNotes.length) h += `<h3 style="margin:22px 0 10px">Observaciones</h3><div class="card">${withNotes.map(p => `<p style="margin:0 0 8px"><b>${p.num}. ${esc(names(p))}:</b> ${esc(p.notas)}</p>`).join("")}</div>`;
+  sec.innerHTML = h;
+  $("csvBtn").onclick = downloadCsv;
+}
+function downloadCsv(){
+  const ps = sortedParejas(), slots = allSlots(), c = S.config;
+  const cell = v => { const s = String(v == null ? "" : v); return /[;"\n\r]/.test(s) ? `"${s.replace(/"/g,'""')}"` : s; };
+  const head = ["N.º","Jugador 1","Jugador 2","Cabeza de serie"].concat(c.categorias.length ? ["Categoría"] : [], ["Respondida"], slots.map(s => `${s.dia.nombre} ${s.f.hora}`), ["Franjas","Observaciones","Enviada"]);
+  const rows = ps.map(p => [p.num || "", p.j1, p.j2, p.cabeza || ""].concat(c.categorias.length ? [p.categoria || ""] : [], [responded(p) ? "Sí" : "No"], slots.map(s => { const v = (p.disp || {})[s.f.id]; return v === 2 ? "Mejor" : v === 1 ? "Puede" : ""; }), [countDisp(p), p.notas || "", fmtTs(p.respondido)]));
+  const csv = "﻿" + [head].concat(rows).map(r => r.map(cell).join(";")).join("\r\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv], { type:"text/csv;charset=utf-8" }));
+  a.download = `disponibilidad_frontenis_invierno_${todayIso()}.csv`;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+
+/* ======================= Ajustes (organizador) ======================= */
+let draft = null;
+function missingSeed(){ return Object.keys(seedData()).filter(k => !S.parejas[k]).length; }
+function paintSeedBtn(){ const b = $("seedBtn"); if(!b) return; const m = missingSeed(); b.disabled = !m; b.textContent = m ? `Cargar el listado (${m} parejas)` : "Listado ya cargado"; }
+function renderAjustes(){
+  if(!draft) draft = JSON.parse(JSON.stringify(S.config));
+  const d = draft, sec = $("sec-ajustes");
+  sec.innerHTML = `
+  <div class="card"><h2>Listado de parejas</h2>
+    <p class="sub">El listado de la hoja (${SEED.length} parejas y 4 cabezas de serie) va dentro de la web. Al cargarlo solo se añaden las que falten: no se pisa nada de lo que ya hayan marcado ni las correcciones de nombres.</p>
+    <button class="btn yellow" id="seedBtn"></button>
+  </div>
+  <div class="card"><h2>Datos del torneo</h2><p class="sub">Se aplican al momento para todos. Si quitas una franja, las parejas que la marcaron dejan de verla (no se borra nada más).</p>
+    ${S.configFromDb ? "" : `<div class="banner warn">Ahora se ven los valores por defecto del código. Al guardar quedarán en la base de datos.</div>`}
+    <div class="field"><label>Título <span class="hint">(lo de después de «·» sale grande en la cabecera)</span></label><input type="text" id="cTitulo" maxlength="80" value="${esc(d.titulo)}"></div>
+    <div class="row2">
+      <div class="field"><label>Fechas</label><input type="text" id="cFechas" maxlength="60" value="${esc(d.fechas)}"></div>
+      <div class="field"><label>Lugar</label><input type="text" id="cLugar" maxlength="60" value="${esc(d.lugar)}"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Plazas</label><input type="text" id="cPlazas" maxlength="10" value="${esc(d.plazas)}"></div>
+      <div class="field"><label>Precio y qué incluye</label><div class="row2" style="gap:8px"><input type="text" id="cPrecio" maxlength="20" value="${esc(d.precio)}"><input type="text" id="cIncluye" maxlength="40" value="${esc(d.incluye)}"></div></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Plazo hasta <span class="hint">(incluido; vacío = sin límite)</span></label><input type="date" id="cLimite" value="${esc(d.fechaLimite)}"></div>
+      <div class="field"><label>Categorías <span class="hint">(separadas por comas; vacío = una sola)</span></label><input type="text" id="cCats" value="${esc(d.categorias.join(", "))}"></div>
+    </div>
+    <div class="field"><label class="switch"><input type="checkbox" id="cAbierta" ${d.abierta !== false ? "checked" : ""}> Se puede marcar la disponibilidad</label></div>
+    <div class="field"><label>Aviso para todos <span class="hint">(opcional, sale arriba)</span></label><input type="text" id="cAviso" maxlength="200" value="${esc(d.aviso)}"></div>
+  </div>
+  <div class="card"><h2>Días y franjas</h2><p class="sub">Una franja por línea, tal como queréis que se vea (ej.: <code>18:00 – 21:00</code>).</p>
+    <div id="cDias">${d.dias.map((dia, i) => `
+      <div class="cfg-day" data-i="${i}">
+        <div class="row3">
+          <div class="field" style="margin:0"><label>Día</label><input type="text" data-k="nombre" value="${esc(dia.nombre)}" placeholder="Sábado"></div>
+          <div class="field" style="margin:0"><label>Fecha</label><input type="text" data-k="fecha" value="${esc(dia.fecha)}" placeholder="9 de enero"></div>
+          <button class="btn danger small" data-rmday="${i}">Quitar día</button>
+        </div>
+        <div class="field" style="margin:10px 0 0"><label>Nota <span class="hint">(opcional)</span></label><input type="text" data-k="nota" value="${esc(dia.nota)}"></div>
+        <div class="field" style="margin:10px 0 0"><label>Franjas</label><textarea data-k="franjas" rows="${Math.max(3, dia.franjas.length)}">${esc(dia.franjas.map(f => f.hora).join("\n"))}</textarea></div>
+      </div>`).join("")}</div>
+    <button class="btn ghost small" id="cAddDay">+ Añadir día</button>
+  </div>
+  <div class="actions"><button class="btn primary" id="cSave">Guardar ajustes</button><button class="btn ghost" id="cReset">Descartar cambios</button></div>`;
+  paintSeedBtn();
+  const sync = () => {
+    const v = id => $(id).value.trim();
+    d.titulo = v("cTitulo"); d.fechas = v("cFechas"); d.lugar = v("cLugar"); d.plazas = v("cPlazas"); d.precio = v("cPrecio"); d.incluye = v("cIncluye");
+    d.fechaLimite = $("cLimite").value; d.abierta = $("cAbierta").checked; d.aviso = v("cAviso");
+    d.categorias = $("cCats").value.split(",").map(s => s.trim()).filter(Boolean);
+    sec.querySelectorAll(".cfg-day").forEach(el => {
+      const dia = d.dias[+el.dataset.i], g = k => el.querySelector(`[data-k="${k}"]`).value.trim();
+      dia.nombre = g("nombre"); dia.fecha = g("fecha"); dia.nota = g("nota");
+      const horas = el.querySelector('[data-k="franjas"]').value.split("\n").map(s => s.trim()).filter(Boolean), old = dia.franjas.slice();
+      dia.franjas = horas.map(hh => { const k = old.findIndex(o => o.hora === hh); return k >= 0 ? old.splice(k,1)[0] : { id: uid(dia.id + "f"), hora: hh }; });
+    });
+  };
+  $("seedBtn").onclick = async () => {
+    try{ const n = await withTimeout(backend.seed(seedData()), 15000); toast(n ? `${n} parejas cargadas` : "No faltaba ninguna"); }
+    catch(e){ toast("No se ha podido cargar: " + errText(e), true); }
+  };
+  sec.querySelectorAll("[data-rmday]").forEach(b => b.onclick = () => { sync(); d.dias.splice(+b.dataset.rmday, 1); renderAjustes(); });
+  $("cAddDay").onclick = () => { sync(); d.dias.push({ id: uid("d"), nombre:"", fecha:"", nota:"", franjas:[] }); renderAjustes(); };
+  $("cReset").onclick = () => { draft = null; renderAjustes(); };
+  $("cSave").onclick = async () => {
+    sync();
+    if(d.dias.some(x => !x.nombre)){ toast("Pon nombre a todos los días.", true); return; }
+    try{ await withTimeout(backend.saveConfig(JSON.parse(JSON.stringify(d))), 15000); draft = null; toast("Ajustes guardados"); }
+    catch(e){ toast("No se han podido guardar: " + errText(e), true); }
+  };
+}
+
+/* ======================= Reglas (las del III Verano; cambiar si el reglamento es otro) ======================= */
+function renderReglas(){
+  $("sec-reglas").innerHTML = `<div class="banner info">Reglamento del III Verano. La organización puede ajustarlo para el invierno.</div><div class="rules">
+  <div class="rule"><div class="rule-h">Saque y juego</div><div class="rule-b">
+    <p>Saque del 3 al 5. Si la pelota pasa del 5 se contará como <b>«media»</b>, con una oportunidad adicional; si no pasa del 3 se contará como <b>«mala»</b>.</p>
+    <p>No se aplicará la regla del doble bote en todo el torneo. Todas las líneas cuentan como malas.</p>
+    <p>Si recibo un pelotazo por debajo de la cintura, es punto mío. Si lo recibo de cintura para arriba, «vueltas».</p>
+    <p>Si un jugador llega justo a una bola y suelta la raqueta para golpearla, es punto perdido. Si se tira a por la pelota, le da sin soltar la raqueta y solo la suelta después por seguridad, el punto es válido.</p></div></div>
+  <div class="rule"><div class="rule-h">Puntuación por fase</div><div class="rule-b">
+    <table class="score"><thead><tr><th>Fase</th><th>Puntos</th><th>Tiempo</th></tr></thead><tbody>
+      <tr><td>Fase de grupos</td><td>15</td><td>—</td></tr><tr><td>Octavos</td><td>18</td><td>20 min</td></tr>
+      <tr><td>Cuartos</td><td>22</td><td>25 min</td></tr><tr><td>Semifinales</td><td>22</td><td>30 min</td></tr><tr><td>Final</td><td>22</td><td>40 min</td></tr></tbody></table>
+    <p>Todos los partidos se resuelven con dos puntos de diferencia. Si al pitar el final hay un punto de diferencia, ese punto se termina; si la pareja que perdía empata, se juega un <b>punto decisivo</b>.</p></div></div>
+  <div class="rule"><div class="rule-h">Antes del partido</div><div class="rule-b">
+    <p>Acudid <b>30 minutos antes</b> de vuestro partido.</p>
+    <p>Llegar <b>5 minutos tarde</b> supone perder el partido 15-0.</p>
+    <p>Se juega con pelotas <b>Dunlop</b> que pone la organización.</p></div></div>
+  <div class="rule"><div class="rule-h">Arbitraje</div><div class="rule-b">
+    <p>Los ganadores de cada partido arbitran el siguiente: uno arbitra y el otro lleva el marcador. Se respeta la decisión de los árbitros.</p></div></div>
+  <div class="rule"><div class="rule-h">Lesiones y sustituciones</div><div class="rule-b">
+    <p>La organización no se hace responsable de posibles lesiones.</p>
+    <p>Un lesionado puede sustituirse por un jugador ajeno al torneo <b>solo en fase de grupos</b>.</p></div></div>
+  <div class="rule"><div class="rule-h">Desempates en fase de grupos</div><div class="rule-b"><ol>
+    <li>Enfrentamientos directos entre los empatados.</li>
+    <li>Diferencial de puntos en los partidos entre los empatados.</li>
+    <li>En triple empate, cuentan todos los partidos del grupo.</li>
+    <li>Si sigue el empate, total de puntos a favor.</li></ol></div></div>
+  </div>`;
+}
+
+/* ======================= Modo organizador ======================= */
+$("orgBtn").onclick = () => {
+  if(S.org){ S.org = false; ssSet(SS_ORG, null); renderOrgUi(); setTab(S.tab); toast("Has salido del modo organizador"); return; }
+  $("pinInput").value = ""; $("pinField").classList.remove("invalid");
+  $("pinOverlay").classList.add("show"); setTimeout(() => $("pinInput").focus(), 50);
+};
+async function tryPin(){
+  let ok = false;
+  try{ ok = (await sha256($("pinInput").value.trim())) === PIN_HASH; }catch(e){ toast("Este navegador no permite comprobar el PIN. Ábrelo en Chrome o Safari.", true); return; }
+  if(!ok){ $("pinField").classList.add("invalid"); return; }
+  S.org = true; ssSet(SS_ORG, "1"); $("pinOverlay").classList.remove("show");
+  renderOrgUi(); setTab("panel"); toast("Modo organizador activado");
+}
+$("pinOk").onclick = tryPin;
+$("pinInput").addEventListener("keydown", e => { if(e.key === "Enter") tryPin(); });
+document.querySelectorAll("[data-close]").forEach(b => b.onclick = () => $(b.dataset.close).classList.remove("show"));
+document.querySelectorAll(".overlay").forEach(o => o.addEventListener("click", e => { if(e.target === o) o.classList.remove("show"); }));
+$("tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if(!b) return; if(b.dataset.tab === "disponibilidad" && S.tab === "disponibilidad") S.done = null; setTab(b.dataset.tab); });
+
+/* ======================= Arranque ======================= */
+let backend;
+try{
+  if(DEMO) backend = makeLocal();
+  else if(typeof firebase === "undefined") throw new Error("no se ha cargado Firebase");
+  else backend = makeFirebase();
+}catch(e){
+  backend = null;
+  $("globalBanner").innerHTML = `<div class="banner err"><b>No se ha podido conectar con la base de datos</b> (${esc(e.message)}). Revisa la conexión y recarga la página.</div>`;
+}
+
+let pendingPair = params.get("pareja");
+let lastConfigJson = "";
+/* Repinta lo que depende de los datos sin tocar un formulario a medio rellenar */
+function refreshViews(configChanged){
+  renderHero(); renderBanner();
+  if(S.tab === "disponibilidad"){
+    if(S.selId || S.isNew){ if(configChanged || (S.selId && !S.parejas[S.selId])) renderForm(); }
+    else if(!S.done){ if(configChanged || !$("pickList")) renderMain(); else renderPickList(); }
+  }
+  if(S.tab === "parejas"){ if($("parejasList")) renderParejasList(); else renderParejas(); }
+  if(S.tab === "panel") renderPanel();
+  if(S.tab === "ajustes"){ if(configChanged){ draft = null; renderAjustes(); } else paintSeedBtn(); }
+}
+if(backend){
+  backend.onConnected(v => { S.connected = v; renderStatus(); });
+  backend.onConfig(c => {
+    const j = JSON.stringify(c || null), changed = j !== lastConfigJson; lastConfigJson = j;
+    S.configFromDb = !!c; S.config = fillConfig(c);
+    refreshViews(changed);
+  }, err => { S.readError = err; renderBanner(); });
+  backend.onParejas(ps => {
+    S.parejas = ps; S.loaded = true; S.readError = null;
+    if(pendingPair){ const id = pendingPair; pendingPair = null; if(ps[id]){ addMine(id); startForm(id); } else toast("No encontramos esa pareja (puede que se haya borrado).", true); }
+    refreshViews(false);
+  }, err => { S.readError = err; S.loaded = true; renderBanner(); renderPickList(); });
+}
+
+renderOrgUi(); renderHero(); renderBanner(); renderStatus(); setTab("disponibilidad");
+})();
+</script>
+</body>
+</html>
