@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Invierno Frontenis Cortes</title>
-<meta name="description" content="III Torneo Local de Frontenis · Invierno 2027 · 8, 9 y 10 de enero · Frontón Retegui, Cortes. Rellenad vuestra disponibilidad.">
+<meta name="description" content="III Torneo Local de Frontenis · Invierno 2027 · 8, 9 y 10 de enero · Frontón Retegui, Cortes. Decidnos cuándo podéis jugar.">
 <meta name="theme-color" content="#123420">
 <!-- Vista previa al compartir por WhatsApp: las URL tienen que ser absolutas -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:title" content="III Torneo Local de Frontenis · Invierno 2027">
-<meta property="og:description" content="8, 9 y 10 de enero · Frontón Retegui, Cortes. Rellenad cuándo podéis jugar.">
+<meta property="og:description" content="8, 9 y 10 de enero · Frontón Retegui, Cortes. Decidnos cuándo podéis jugar.">
 <meta property="og:url" content="https://frontenis-cortes.github.io/frontenis-invierno/">
 <meta property="og:image" content="https://frontenis-cortes.github.io/frontenis-invierno/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
   --g-900:#0f2a1a; --g-800:#17402a; --g-700:#1f5535; --g-600:#2a6b45;
   --yellow:#f2c618; --yellow-ink:#2a2200; --red-line:#c8282b;
   --paper:#f1f3ee; --card:#ffffff; --ink:#14201a; --muted:#5d6b62; --line:#dde3dc;
-  --green:#1f9d63; --green-bg:#e3f6ec; --star:#b9850a; --star-bg:#fff3d1;
+  --green:#1f9d63; --green-bg:#e3f6ec; --star-bg:#fff3d1;
   --red:#cf3b4b; --red-bg:#fde8eb; --blue-bg:#e8f0ff;
   --shadow:0 1px 2px rgba(15,42,26,.06),0 8px 24px rgba(15,42,26,.08);
   --r:14px;
@@ -30,10 +30,10 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{background:var(--paper);color:var(--ink);font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
-button,input,textarea{font:inherit;color:inherit}
+button,input,textarea,select{font:inherit;color:inherit}
 button{cursor:pointer}
-.wrap{max-width:980px;margin:0 auto;padding-left:16px;padding-right:16px}
-code{background:rgba(0,0,0,.06);border-radius:5px;padding:1px 5px;font-size:.92em}
+.wrap{max-width:820px;margin:0 auto;padding-left:16px;padding-right:16px}
+.wrap.wide{max-width:1040px}
 
 /* ---------- Cabecera ---------- */
 .hero{color:#fff;border-top:5px solid var(--red-line);border-bottom:5px solid var(--red-line);
@@ -60,14 +60,13 @@ code{background:rgba(0,0,0,.06);border-radius:5px;padding:1px 5px;font-size:.92e
 .poster.show{display:block}
 .poster img{max-width:100%;max-height:82vh;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
 
-/* ---------- Pestañas ---------- */
+/* ---------- Pestañas (solo organización) ---------- */
 .tabs-bar{position:sticky;top:0;z-index:20;background:rgba(241,243,238,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs-bar[hidden]{display:none}
 .tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:8px 0}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;border:0;background:transparent;padding:9px 14px;border-radius:10px;font-weight:600;color:var(--muted);font-size:15px;white-space:nowrap}
 .tab[aria-selected="true"]{background:var(--g-800);color:#fff}
-.tab.org{color:var(--star)}
-.tab.org[aria-selected="true"]{background:var(--yellow);color:var(--yellow-ink)}
 .tab .count{display:inline-block;min-width:20px;padding:0 6px;margin-left:4px;border-radius:999px;background:var(--star-bg);color:var(--ink);font-size:12px;line-height:20px;text-align:center}
 
 main{padding:18px 0 40px}
@@ -80,7 +79,6 @@ section[hidden]{display:none}
 .banner.warn{background:var(--star-bg);color:#5c3f08;border:1px solid #f0d58a}
 .banner.err{background:var(--red-bg);color:#7a1d2a;border:1px solid #f3b5bf}
 .banner.info{background:var(--blue-bg);color:#13306b;border:1px solid #c7d8fb}
-.banner.ok{background:var(--green-bg);color:#0f5a37;border:1px solid #a9e2c5}
 .banner.demo{background:#2b1a5c;color:#fff}
 
 /* ---------- Formulario ---------- */
@@ -89,36 +87,38 @@ section[hidden]{display:none}
 .field .hint{font-weight:400;color:var(--muted)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media (max-width:560px){.row2{grid-template-columns:1fr}}
-input[type=text],input[type=date],textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;background:#fff;font-size:16px;outline:none;transition:border-color .15s}
-input:focus,textarea:focus{border-color:var(--g-600)}
+input[type=text],input[type=date],textarea,select{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;background:#fff;font-size:16px;outline:none;transition:border-color .15s}
+select{width:auto;padding:9px 10px;appearance:auto}
+input:focus,textarea:focus,select:focus{border-color:var(--g-600)}
 textarea{min-height:76px;resize:vertical}
-.err-msg{color:var(--red);font-size:13px;margin-top:5px;display:none}
+.err-msg{color:var(--red);font-size:13px;margin-top:6px;display:none}
+.invalid > .err-msg{display:block}
 .field.invalid input{border-color:var(--red)}
-.field.invalid .err-msg{display:block}
 .form-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
 .mine{display:flex;flex-direction:column;gap:8px}
 .mine-item{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1.5px solid var(--green);background:#f6fcf8;border-radius:12px;padding:10px 12px}
 .mine-item b{font-size:15px}
 .mine-item small{display:block;color:var(--muted)}
 
-.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted);margin:2px 0 12px}
-.legend span{display:inline-flex;align-items:center;gap:6px}
-.sw{width:16px;height:16px;border-radius:5px;border:1.5px solid var(--line);display:inline-block}
-.sw.s1{background:var(--green-bg);border-color:var(--green)}
-.day{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
-.day-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-.day-name{font-weight:800}
-.day-date{color:var(--muted);font-weight:500;margin-left:6px}
-.day-note{font-size:13px;color:var(--muted);margin:-4px 0 10px}
-.day-quick{display:flex;gap:6px}
-.mini{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;font-size:13px;font-weight:600;color:var(--muted)}
-.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px}
-.slot{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 8px;text-align:center;font-weight:600;font-size:14px;line-height:1.2;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .08s}
-.slot:active{transform:scale(.97)}
-.slot .st{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-top:3px}
-.slot.s1{background:var(--green-bg);border-color:var(--green)}
-.slot.s1 .st{color:var(--green)}
-.slot:disabled{cursor:not-allowed;opacity:.6}
+.day{border:1.5px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.day.invalid{border-color:var(--red)}
+.day-head{margin-bottom:10px}
+.day-name{font-weight:800;font-size:17px}
+.day-date{color:var(--muted);font-weight:500;margin-left:6px;font-size:14px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:11px 12px;font-weight:600;font-size:15px;width:100%}
+.opt i{flex:0 0 20px;height:20px;border-radius:50%;border:2px solid #b9c3bb;display:inline-block;position:relative}
+.opt[aria-pressed="true"]{border-color:var(--g-700);background:#f3f8f4}
+.opt[aria-pressed="true"] i{border-color:var(--g-700)}
+.opt[aria-pressed="true"] i::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--g-700)}
+.opt.no[aria-pressed="true"]{border-color:var(--red);background:var(--red-bg)}
+.opt.no[aria-pressed="true"] i{border-color:var(--red)}
+.opt.no[aria-pressed="true"] i::after{background:var(--red)}
+.limits{margin-top:10px;padding:12px;border-radius:10px;background:var(--paper)}
+.lim{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px;font-weight:600;font-size:15px}
+.lim .x{border:0;background:transparent;color:var(--muted);font-size:20px;line-height:1;padding:4px 8px}
+.lim-err{flex-basis:100%;color:var(--red);font-size:13px;font-weight:500}
+.add{border:1.5px dashed #b9c3bb;background:#fff;border-radius:9px;padding:7px 12px;font-weight:600;font-size:14px;color:var(--g-700)}
 
 .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
 .btn{border:0;border-radius:11px;padding:12px 18px;font-weight:700;font-size:15px}
@@ -126,7 +126,6 @@ textarea{min-height:76px;resize:vertical}
 .btn.ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
 .btn.danger{background:#fff;border:1.5px solid #f3b5bf;color:var(--red)}
 .btn.small{padding:7px 12px;font-size:13px;border-radius:9px}
-.btn.yellow{background:var(--yellow);color:var(--yellow-ink)}
 .btn:disabled{cursor:not-allowed;opacity:.55}
 
 .done{text-align:center;padding:26px 18px}
@@ -144,48 +143,32 @@ textarea{min-height:76px;resize:vertical}
 .li .no{flex:0 0 30px;height:30px;border-radius:8px;background:#eef0ec;color:var(--muted);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px}
 .li.ok .no{background:var(--green);color:#fff}
 .li small{display:block;color:var(--muted)}
-.li .ok-t{color:var(--green);font-weight:700}
-.li .x-t{color:var(--red);font-weight:700}
+.ok-t{color:var(--green);font-weight:700}
+.x-t{color:var(--red);font-weight:700}
+.cov{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.covday{background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:12px 14px}
+.covday h4{margin:0 0 8px;font-size:15px}
+.bar{display:grid;grid-template-columns:48px 1fr 28px;align-items:center;gap:8px;font-size:12.5px;margin:3px 0}
+.bar .t{color:var(--muted);font-variant-numeric:tabular-nums}
+.bar .b{height:14px;background:#eef0ec;border-radius:4px;overflow:hidden}
+.bar .b i{display:block;height:100%;border-radius:4px}
+.bar .n{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
 .rcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
 .rcard{background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:12px 14px}
 .rcard .n{font-weight:700;font-size:15px;line-height:1.3}
-.rcard .meta{margin-top:4px;font-size:12px;color:var(--muted)}
+.rcard .d{margin-top:6px;font-size:13.5px;line-height:1.45}
+.rcard .meta{margin-top:6px;font-size:12px;color:var(--muted)}
 .rcard .notes{margin-top:8px;font-size:13px;background:var(--paper);border-radius:8px;padding:7px 9px;white-space:pre-wrap}
 .rcard .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:#eef0ec;color:var(--muted);margin-top:6px}
 .tag.ok{background:var(--green-bg);color:var(--green)}
 .tag.warn{background:var(--star-bg);color:#5c3f08}
-.matrix-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:#fff;max-height:70vh}
-table.matrix{border-collapse:separate;border-spacing:0;font-size:13px;min-width:100%}
-.matrix th,.matrix td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:6px 8px;text-align:center;white-space:nowrap}
-.matrix thead th{position:sticky;background:var(--g-800);color:#fff;z-index:2}
-.matrix thead tr:first-child th{top:0}
-.matrix thead tr:nth-child(2) th{top:31px;background:var(--g-700);font-weight:600}
-.matrix .pn{position:sticky;left:0;background:#fff;text-align:left;z-index:1;font-weight:600;max-width:240px;overflow:hidden;text-overflow:ellipsis}
-.matrix thead .pn{z-index:3;background:var(--g-900)}
-@media (max-width:560px){.matrix .pn{max-width:120px}}
-.matrix td.s1{background:var(--green-bg);color:var(--green);font-weight:700}
-.matrix tfoot td{position:sticky;bottom:0;background:#f4f7f2;font-weight:700}
-.matrix tfoot .pn{z-index:3;background:#f4f7f2}
-.heat{display:inline-block;min-width:26px;border-radius:6px;padding:1px 6px;color:#fff}
-.slot-sum{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
-.ss{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
-.ss .h{display:flex;justify-content:space-between;font-weight:700;gap:8px}
-.ss .who{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
 .h3{margin:22px 0 10px;font-size:16px}
 .cfg-day{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;background:#fbfcfa}
-.cfg-day .row3{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end}
-@media (max-width:560px){.cfg-day .row3{grid-template-columns:1fr 1fr}.cfg-day .row3 .btn{grid-column:1/-1}}
+.cfg-day .row4{display:grid;grid-template-columns:1fr 1fr 110px 110px auto;gap:8px;align-items:end}
+@media (max-width:680px){.cfg-day .row4{grid-template-columns:1fr 1fr}.cfg-day .row4 .btn{grid-column:1/-1}}
 .switch{display:flex;align-items:center;gap:10px;font-weight:600}
 .switch input{width:22px;height:22px}
-
-/* ---------- Reglas ---------- */
-.rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
-.rule{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
-.rule-h{background:var(--g-800);color:#fff;font-weight:700;padding:10px 14px}
-.rule-b{padding:4px 14px 12px;font-size:14px;line-height:1.5}
-.score{width:100%;border-collapse:collapse;font-size:14px}
-.score th,.score td{border-bottom:1px solid var(--line);padding:6px;text-align:left}
 
 /* ---------- Pie, modales, aviso ---------- */
 footer{text-align:center;padding:10px 16px 40px;color:var(--muted);font-size:13px}
@@ -224,29 +207,19 @@ footer .lnk{background:none;border:0;color:var(--muted);text-decoration:underlin
   </div>
 </header>
 
-<div class="tabs-bar">
-  <div class="wrap">
+<div class="tabs-bar" id="tabsBar" hidden>
+  <div class="wrap wide">
     <nav class="tabs" id="tabs" role="tablist">
-      <button class="tab" role="tab" data-tab="disponibilidad">Disponibilidad</button>
-      <button class="tab" role="tab" data-tab="cuadrante">Cuadrante</button>
-      <button class="tab" role="tab" data-tab="reglas">Reglas</button>
-      <button class="tab org" role="tab" data-tab="respuestas" hidden>Respuestas <span class="count" id="countTab">0</span></button>
-      <button class="tab org" role="tab" data-tab="ajustes" hidden>Ajustes</button>
+      <button class="tab" role="tab" data-tab="formulario">Formulario</button>
+      <button class="tab" role="tab" data-tab="respuestas">Respuestas <span class="count" id="countTab">0</span></button>
+      <button class="tab" role="tab" data-tab="ajustes">Ajustes</button>
     </nav>
   </div>
 </div>
 
-<main class="wrap">
+<main class="wrap" id="main">
   <div id="globalBanner"></div>
-  <section id="sec-disponibilidad"></section>
-  <section id="sec-cuadrante" hidden>
-    <div class="card" style="text-align:center;padding:30px 18px">
-      <div style="font-size:40px">🗓️</div>
-      <h2 style="margin-top:8px">El cuadrante se publicará aquí</h2>
-      <p class="sub" style="margin:6px auto 0;max-width:460px">Con la disponibilidad de todas las parejas, la organización montará los grupos y los horarios. Lo veréis en esta misma página, con el mismo enlace.</p>
-    </div>
-  </section>
-  <section id="sec-reglas" hidden></section>
+  <section id="sec-formulario"></section>
   <section id="sec-respuestas" hidden></section>
   <section id="sec-ajustes" hidden></section>
 </main>
@@ -295,9 +268,10 @@ const SITE_URL = "https://frontenis-cortes.github.io/frontenis-invierno/";
 /* Cuentas de Google de la organización. La protección real está en las reglas de Firebase
    (firebase-rules.json): si se añade a alguien aquí, hay que añadirlo también allí. */
 const ORG_EMAILS = ["alvaro.lopezdelcorral@gmail.com"];
+const STEP = 30;   // minutos entre opciones de hora
 
 /* Configuración por defecto: vale hasta que la organización guarde la suya en «Ajustes».
-   Los id de día y de franja no se cambian nunca: las respuestas guardadas apuntan a ellos. */
+   Cada día tiene su horario de juego (desde/hasta; si «hasta» es menor, acaba de madrugada). */
 const DEFAULT_CONFIG = {
   titulo: "III Torneo Local de Frontenis · Invierno 2027",
   fechas: "8, 9 y 10 de enero",
@@ -309,17 +283,15 @@ const DEFAULT_CONFIG = {
   abierta: true,
   aviso: "",
   dias: [
-    { id:"d1", nombre:"Viernes", fecha:"8 de enero", nota:"", franjas:[
-      {id:"d1f1",hora:"15:00 – 18:00"},{id:"d1f2",hora:"18:00 – 21:00"},{id:"d1f3",hora:"21:00 – 00:00"},{id:"d1f4",hora:"00:00 – 02:00"}]},
-    { id:"d2", nombre:"Sábado", fecha:"9 de enero", nota:"", franjas:[
-      {id:"d2f1",hora:"08:00 – 11:00"},{id:"d2f2",hora:"11:00 – 14:00"},{id:"d2f3",hora:"16:00 – 19:00"},{id:"d2f4",hora:"19:00 – 22:00"},{id:"d2f5",hora:"22:00 – 02:00"}]}
+    { id:"d1", nombre:"Viernes", fecha:"8 de enero", desde:"15:00", hasta:"02:00" },
+    { id:"d2", nombre:"Sábado",  fecha:"9 de enero", desde:"08:00", hasta:"02:00" }
   ]
 };
 
 /* ======================= Utilidades ======================= */
 const params = new URLSearchParams(location.search);
 const DEMO = params.has("demo");
-const LS_MINE = "fi_mis_respuestas", LS_DEMO = "fi_demo_db2", SS_DEMO_ORG = "fi_demo_org";
+const LS_MINE = "fi_mis_respuestas", LS_DEMO = "fi_demo_db3", SS_DEMO_ORG = "fi_demo_org";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm = s => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/\s+/g," ").trim();
@@ -339,6 +311,13 @@ function errText(e){ return e && e.code === "PERMISSION_DENIED" ? "la base de da
 let toastT;
 function toast(msg, err){ const t = $("toast"); t.textContent = msg; t.className = "toast show" + (err ? " err" : ""); clearTimeout(toastT); toastT = setTimeout(()=> t.className = "toast", err ? 6000 : 2800); }
 
+/* Horas: "HH:MM" ↔ minutos desde el inicio del día de juego (las de madrugada siguen contando: 01:00 = 25:00) */
+const toMin = s => { const [h,m] = String(s).split(":").map(Number); return h*60 + (m||0); };
+const fromMin = n => { n = ((n % 1440) + 1440) % 1440; return String(Math.floor(n/60)).padStart(2,"0") + ":" + String(n%60).padStart(2,"0"); };
+function dayRange(d){ const a = toMin(d.desde || "00:00"); let b = toMin(d.hasta || "00:00"); if(b <= a) b += 1440; return [a, b]; }
+function abs(d, hhmm){ const [a] = dayRange(d); let t = toMin(hhmm); if(t < a) t += 1440; return t; }
+function hourOptions(d){ const [a,b] = dayRange(d), out = []; for(let t = a; t <= b; t += STEP) out.push(fromMin(t)); return out; }
+
 /* ======================= Datos: Firebase o modo prueba ======================= */
 /* Público: leer config, crear una respuesta, y leer/cambiar/borrar la suya por su id (el id va en su enlace).
    Organización (con Google): leer todas las respuestas y el listado, y cambiar la config. */
@@ -353,7 +332,7 @@ function makeFirebase(){
     async saveRespuesta(id, data){ if(id){ await root.child("respuestas/" + id).set(data); return id; } const r = root.child("respuestas").push(); await r.set(data); return r.key; },
     deleteRespuesta(id){ return root.child("respuestas/" + id).remove(); },
     saveConfig(c){ return root.child("config").set(c); },
-    onAuth(cb){ auth.onAuthStateChanged(u => cb(u ? { email:(u.email || "").toLowerCase(), name:u.displayName || u.email } : null)); },
+    onAuth(cb){ auth.onAuthStateChanged(u => cb(u ? { email:(u.email || "").toLowerCase() } : null)); },
     async login(){
       const p = new firebase.auth.GoogleAuthProvider(); p.setCustomParameters({ prompt:"select_account" });
       try{ await auth.signInWithPopup(p); }
@@ -382,8 +361,8 @@ function makeLocal(){
     async saveRespuesta(id, data){ const k = id || uid("-demo"); write(d => { d.respuestas = d.respuestas || {}; d.respuestas[k] = data; }); return k; },
     async deleteRespuesta(id){ write(d => { if(d.respuestas) delete d.respuestas[id]; }); },
     async saveConfig(c){ write(d => { d.config = c; }); },
-    onAuth(cb){ authCb = cb; setTimeout(() => cb(ssGet(SS_DEMO_ORG) ? { email:ORG_EMAILS[0], name:"Organización (prueba)" } : null), 0); },
-    async login(){ ssSet(SS_DEMO_ORG, "1"); authCb({ email:ORG_EMAILS[0], name:"Organización (prueba)" }); },
+    onAuth(cb){ authCb = cb; setTimeout(() => cb(ssGet(SS_DEMO_ORG) ? { email:ORG_EMAILS[0] } : null), 0); },
+    async login(){ ssSet(SS_DEMO_ORG, "1"); authCb({ email:ORG_EMAILS[0] }); },
     async logout(){ ssSet(SS_DEMO_ORG, null); authCb(null); },
     watchOrg(onR, onP){ orgCbs = [onR, onP]; setTimeout(emit, 0); },
     unwatchOrg(){ orgCbs = null; }
@@ -393,7 +372,9 @@ function fillConfig(c){
   const base = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
   if(!c) return base;
   const out = Object.assign(base, c);
-  out.dias = (Array.isArray(c.dias) ? c.dias : []).filter(Boolean).map(d => ({ id:d.id, nombre:d.nombre || "", fecha:d.fecha || "", nota:d.nota || "", franjas:(Array.isArray(d.franjas) ? d.franjas : []).filter(Boolean) }));
+  out.dias = (Array.isArray(c.dias) ? c.dias : []).filter(Boolean).filter(d => d.desde && d.hasta)
+    .map(d => ({ id:d.id, nombre:d.nombre || "", fecha:d.fecha || "", desde:d.desde, hasta:d.hasta }));
+  if(!out.dias.length) out.dias = base.dias.length ? JSON.parse(JSON.stringify(DEFAULT_CONFIG.dias)) : [];
   return out;
 }
 
@@ -403,18 +384,26 @@ const S = {
   user:null, org:false, orgError:null,
   respuestas:{}, parejas:{}, orgLoaded:false,
   mine:{},                 // respuestas de este móvil: id → datos (leídas una a una por su id)
-  tab:"disponibilidad", editId:null, form:blankForm(), done:null
+  tab:"formulario", editId:null, form:blankForm(), done:null
 };
-function blankForm(){ return { j1:"", j2:"", disp:{}, notas:"" }; }
+function blankForm(){ return { j1:"", j2:"", dias:{}, notas:"" }; }
 function mineIds(){ return lsGet(LS_MINE, []); }
 function addMine(id){ const m = mineIds().filter(x => x !== id); m.unshift(id); lsSet(LS_MINE, m.slice(0,5)); }
 function delMine(id){ lsSet(LS_MINE, mineIds().filter(x => x !== id)); delete S.mine[id]; }
 function isOpen(){ const c = S.config; if(c.abierta === false) return false; if(c.fechaLimite && todayIso() > c.fechaLimite) return false; return true; }
 function canEdit(){ return isOpen() || S.org; }
-function allSlots(){ const out = []; S.config.dias.forEach(d => d.franjas.forEach(f => out.push({ dia:d, f }))); return out; }
-function validSlotIds(){ return new Set(allSlots().map(x => x.f.id)); }
-function countDisp(p){ const v = validSlotIds(); return Object.entries((p && p.disp) || {}).filter(([k,x]) => x > 0 && v.has(k)).length; }
 function names(p){ return `${p.j1 || "?"} – ${p.j2 || "?"}`; }
+function limitsOf(r, d){ const x = ((r && r.dias) || {})[d.id]; return x && Array.isArray(x.no) ? x.no.filter(Boolean) : (x && x.no ? Object.values(x.no) : []); }
+function modeOf(r, d){ const x = ((r && r.dias) || {})[d.id]; return x ? x.modo : ""; }
+/* ¿Puede la pareja jugar a esa hora (en minutos absolutos del día)? */
+function canPlay(r, d, t){ const m = modeOf(r, d); if(m === "todo") return true; if(m !== "limites") return false; return !limitsOf(r, d).some(l => t >= abs(d, l.de) && t < abs(d, l.a)); }
+function dayText(r, d){
+  const m = modeOf(r, d);
+  if(m === "todo") return "cualquier hora";
+  if(m === "nada") return "no puede";
+  if(m === "limites") return "no " + limitsOf(r, d).map(l => `${l.de}–${l.a}`).join(", ");
+  return "sin responder";
+}
 
 /* ======================= Cabecera, pestañas, avisos ======================= */
 function renderHero(){
@@ -428,22 +417,22 @@ function renderHero(){
     ["Plazas", c.plazas, "parejas como máximo"],
     ["Inscripción", c.precio, ["por pareja", c.incluye && "incluye " + c.incluye].filter(Boolean).join(" · ")]
   ].map(([k,v,s]) => `<div class="fact"><small>${esc(k)}</small><b>${esc(v || "—")}</b>${s ? `<span>${esc(s)}</span>` : ""}</div>`).join("");
-  $("shareTop").href = wa(`🏆 ${c.titulo}\n📅 ${c.fechas} · ${c.lugar}\n\nRellenad cuándo podéis jugar 👇\n${link()}`);
+  $("shareTop").href = wa(`🏆 ${c.titulo}\n📅 ${c.fechas} · ${c.lugar}\n\nDecidnos cuándo podéis jugar 👇\n${link()}`);
   $("countTab").textContent = Object.keys(S.respuestas).length;
 }
-const TABS = ["disponibilidad","cuadrante","reglas","respuestas","ajustes"];
+const TABS = ["formulario","respuestas","ajustes"];
 function setTab(t){
-  if((t === "respuestas" || t === "ajustes") && !S.org) t = "disponibilidad";
+  if(t !== "formulario" && !S.org) t = "formulario";
   S.tab = t;
   document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t ? "true" : "false"));
   TABS.forEach(k => $("sec-" + k).hidden = k !== t);
-  if(t === "disponibilidad") renderMain();
+  $("main").classList.toggle("wide", t === "respuestas");
+  if(t === "formulario") renderMain();
   if(t === "respuestas") renderRespuestas();
   if(t === "ajustes") renderAjustes();
-  if(t === "reglas") renderReglas();
 }
 function renderOrgUi(){
-  document.querySelectorAll(".tab.org").forEach(b => b.hidden = !S.org);
+  $("tabsBar").hidden = !S.org;
   $("orgBtn").textContent = S.org ? `Salir de la organización (${S.user.email})` : "Acceso organización";
 }
 function renderBanner(){
@@ -463,21 +452,20 @@ function renderStatus(){
 $("posterBtn").onclick = () => { const p = $("poster"), on = !p.classList.contains("show"); p.classList.toggle("show", on); $("posterBtn").textContent = on ? "Ocultar cartel" : "Ver cartel"; };
 
 /* ======================= Formulario ======================= */
-const STATE_TXT = ["No podemos", "✓ Podemos"];
 function renderMain(){
-  const sec = $("sec-disponibilidad");
+  const sec = $("sec-formulario");
   if(S.done){ sec.innerHTML = doneHtml(); bindDone(); return; }
   const f = S.form, editing = !!S.editId, open = canEdit(), dis = open ? "" : "disabled";
   const mine = Object.entries(S.mine).filter(([id]) => id !== S.editId);
   let h = "";
   if(mine.length && !editing){
     h += `<div class="card"><h3>Ya enviasteis desde este móvil</h3><div class="mine">` +
-      mine.map(([id,p]) => `<div class="mine-item"><div><b>${esc(names(p))}</b><small>${countDisp(p)} franjas · ${esc(fmtTs(p.actualizado))}</small></div><button class="btn ghost small" data-edit="${esc(id)}">Modificar</button></div>`).join("") +
+      mine.map(([id,p]) => `<div class="mine-item"><div><b>${esc(names(p))}</b><small>${S.config.dias.map(d => `${esc(d.nombre)}: ${esc(dayText(p, d))}`).join(" · ")}</small></div><button class="btn ghost small" data-edit="${esc(id)}">Modificar</button></div>`).join("") +
       `</div></div>`;
   }
   h += `<div class="card"><div class="form-head"><div>
       <h2>${editing ? "Modificar vuestra disponibilidad" : "¿Cuándo podéis jugar?"}</h2>
-      <p class="sub" style="margin:4px 0 0">${editing ? "Cambiad lo que necesitéis y guardad." : "Poned los nombres de la pareja y marcad las franjas en las que <b>podéis jugar los dos</b>. Basta con que lo rellene uno. Solo lo ve la organización."}</p></div>
+      <p class="sub" style="margin:4px 0 0">${editing ? "Cambiad lo que necesitéis y guardad." : "Poned los nombres de la pareja y, para cada día, decidnos si hay horas en las que <b>no podéis</b>. Basta con que lo rellene uno. Solo lo ve la organización."}</p></div>
       ${editing ? `<button class="btn ghost small" id="cancelEdit">Cancelar</button>` : ""}</div><div style="height:12px"></div>`;
   if(!open) h += `<div class="banner err">El plazo está cerrado. Si necesitáis cambiar algo, hablad con la organización.</div>`;
   else if(S.config.fechaLimite) h += `<div class="banner warn">Tenéis hasta el <b>${esc(fmtDate(S.config.fechaLimite))}</b>.</div>`;
@@ -487,12 +475,9 @@ function renderMain(){
       <div class="field" id="fj2Field"><label for="fJ2">Jugador 2</label>
         <input type="text" id="fJ2" maxlength="40" value="${esc(f.j2)}" placeholder="Nombre y apellido del compañero" ${dis}><div class="err-msg">Pon el nombre del compañero.</div></div>
     </div>
-    <div class="field" id="fDispField"><label>Franjas</label>
-      <div class="legend"><span><i class="sw"></i>No podemos</span><span><i class="sw s1"></i>Podemos</span><span>· Toca para marcar</span></div>
-      <div id="dispGrid">${dispGridHtml(dis)}</div>
-      <div class="err-msg">Marcad al menos una franja en la que podáis jugar.</div></div>
+    <div id="daysBox">${S.config.dias.map(d => dayHtml(d, dis)).join("")}</div>
     <div class="field"><label for="fNotas">Observaciones <span class="hint">(opcional)</span></label>
-      <textarea id="fNotas" maxlength="300" placeholder="Ej.: el sábado no llegamos antes de las 10; uno trabaja el viernes hasta las 20:00…" ${dis}>${esc(f.notas)}</textarea></div>
+      <textarea id="fNotas" maxlength="300" placeholder="Algo más que debamos saber" ${dis}>${esc(f.notas)}</textarea></div>
     <div class="actions">
       <button class="btn primary" id="submitBtn" ${dis}>${editing ? "Guardar cambios" : "Enviar"}</button>
       ${editing ? `<button class="btn danger" id="deleteBtn" ${dis}>Borrar nuestra respuesta</button>` : ""}
@@ -500,52 +485,74 @@ function renderMain(){
   sec.innerHTML = h;
   bindForm();
 }
-function dispGridHtml(dis){
-  const c = S.config, f = S.form;
-  if(!c.dias.length) return `<div class="banner warn">La organización todavía no ha publicado las franjas.</div>`;
-  return c.dias.map(d => `
-    <div class="day">
-      <div class="day-head"><div><span class="day-name">${esc(d.nombre)}</span><span class="day-date">${esc(d.fecha)}</span></div>
-        <div class="day-quick"><button type="button" class="mini" data-all="${esc(d.id)}" ${dis}>Todo</button><button type="button" class="mini" data-none="${esc(d.id)}" ${dis}>Nada</button></div></div>
-      ${d.nota ? `<p class="day-note">${esc(d.nota)}</p>` : ""}
-      <div class="slots">${d.franjas.map(fr => { const s = f.disp[fr.id] ? 1 : 0; return `<button type="button" class="slot s${s}" data-slot="${esc(fr.id)}" ${dis}>${esc(fr.hora)}<span class="st">${STATE_TXT[s]}</span></button>`; }).join("")}</div>
-    </div>`).join("");
+function dayHtml(d, dis){
+  const st = S.form.dias[d.id] || { modo:"", no:[] }, opts = hourOptions(d);
+  const sel = (val, k, i) => `<select data-day="${esc(d.id)}" data-i="${i}" data-k="${k}" ${dis}>${opts.map(o => `<option${o === val ? " selected" : ""}>${o}</option>`).join("")}</select>`;
+  const opt = (modo, txt, cls) => `<button type="button" class="opt ${cls || ""}" data-day="${esc(d.id)}" data-modo="${modo}" aria-pressed="${st.modo === modo}" ${dis}><i></i>${txt}</button>`;
+  let h = `<div class="day" id="day-${esc(d.id)}"><div class="day-head"><span class="day-name">${esc(d.nombre)}</span><span class="day-date">${esc(d.fecha)} · de ${esc(d.desde)} a ${esc(d.hasta)}</span></div>
+    <div class="opts">${opt("todo", "Podemos a cualquier hora")}${opt("limites", "Hay horas que no podemos")}${opt("nada", `No podemos en todo el ${esc(d.nombre.toLowerCase())}`, "no")}</div>`;
+  if(st.modo === "limites"){
+    h += `<div class="limits">` + st.no.map((l, i) => `<div class="lim">No podemos de ${sel(l.de, "de", i)} a ${sel(l.a, "a", i)}
+        <button type="button" class="x" data-rm="${esc(d.id)}" data-i="${i}" aria-label="Quitar" ${dis}>✕</button>
+        ${abs(d, l.a) <= abs(d, l.de) ? `<span class="lim-err">La hora final tiene que ser después de la inicial.</span>` : ""}</div>`).join("") +
+      `<button type="button" class="add" data-add="${esc(d.id)}" ${dis}>+ Añadir otro hueco</button></div>`;
+  }
+  return h + `<div class="err-msg">Elegid una opción para el ${esc(d.nombre.toLowerCase())}.</div></div>`;
 }
+function rerenderDay(id){ const d = S.config.dias.find(x => x.id === id), el = $("day-" + id); if(d && el){ el.outerHTML = dayHtml(d, canEdit() ? "" : "disabled"); } }
 function bindForm(){
-  const sec = $("sec-disponibilidad"), f = S.form;
+  const sec = $("sec-formulario"), f = S.form;
   [["fJ1","j1"],["fJ2","j2"],["fNotas","notas"]].forEach(([id,key]) => { const el = $(id); el.addEventListener("input", () => { f[key] = el.value; const fl = el.closest(".field"); if(fl) fl.classList.remove("invalid"); }); });
   sec.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => startEdit(b.dataset.edit, S.mine[b.dataset.edit]));
-  $("dispGrid").addEventListener("click", e => {
-    const slot = e.target.closest("[data-slot]"), all = e.target.closest("[data-all]"), none = e.target.closest("[data-none]");
-    if(slot){ const id = slot.dataset.slot; if(f.disp[id]) delete f.disp[id]; else f.disp[id] = 1; paintSlot(slot, f.disp[id] ? 1 : 0); }
-    else if(all || none){
-      const d = S.config.dias.find(x => x.id === (all ? all.dataset.all : none.dataset.none));
-      d.franjas.forEach(fr => { if(all) f.disp[fr.id] = 1; else delete f.disp[fr.id]; });
-      $("dispGrid").querySelectorAll("[data-slot]").forEach(el => paintSlot(el, f.disp[el.dataset.slot] ? 1 : 0));
-    } else return;
-    $("fDispField").classList.remove("invalid");
+  const box = $("daysBox");
+  box.addEventListener("click", e => {
+    const o = e.target.closest("[data-modo]"), add = e.target.closest("[data-add]"), rm = e.target.closest("[data-rm]");
+    if(o){
+      const id = o.dataset.day, d = S.config.dias.find(x => x.id === id), st = f.dias[id] = f.dias[id] || { modo:"", no:[] };
+      st.modo = o.dataset.modo;
+      if(st.modo === "limites" && !st.no.length){ const [a] = dayRange(d); st.no.push({ de:fromMin(a), a:fromMin(a + 120) }); }
+      rerenderDay(id);
+    } else if(add){
+      const id = add.dataset.add, d = S.config.dias.find(x => x.id === id), st = f.dias[id], last = st.no[st.no.length - 1], [, b] = dayRange(d);
+      const start = last ? Math.min(abs(d, last.a), b - STEP) : dayRange(d)[0];
+      st.no.push({ de:fromMin(start), a:fromMin(Math.min(start + 120, b)) }); rerenderDay(id);
+    } else if(rm){
+      const id = rm.dataset.rm, st = f.dias[id]; st.no.splice(+rm.dataset.i, 1); if(!st.no.length) st.modo = "todo"; rerenderDay(id);
+    }
+  });
+  box.addEventListener("change", e => {
+    const s = e.target.closest("select[data-day]"); if(!s) return;
+    f.dias[s.dataset.day].no[+s.dataset.i][s.dataset.k] = s.value; rerenderDay(s.dataset.day);
   });
   const ce = $("cancelEdit"); if(ce) ce.onclick = cancelEdit;
   const del = $("deleteBtn"); if(del) del.onclick = () => askDelete(S.editId);
   $("submitBtn").onclick = submit;
 }
-function paintSlot(el, s){ el.className = "slot s" + s; el.querySelector(".st").textContent = STATE_TXT[s]; }
 async function submit(){
-  const f = S.form, j1 = f.j1.trim(), j2 = f.j2.trim(), valid = validSlotIds();
-  const disp = {}; Object.keys(f.disp).forEach(k => { if(f.disp[k] && valid.has(k)) disp[k] = 1; });
+  const f = S.form, j1 = f.j1.trim(), j2 = f.j2.trim();
   let ok = true;
   if(!j1){ $("fj1Field").classList.add("invalid"); ok = false; }
   if(!j2){ $("fj2Field").classList.add("invalid"); ok = false; }
-  if(!Object.keys(disp).length){ $("fDispField").classList.add("invalid"); ok = false; }
-  if(!ok){ const first = document.querySelector(".field.invalid"); if(first) first.scrollIntoView({ behavior:"smooth", block:"center" }); return; }
+  const dias = {};
+  S.config.dias.forEach(d => {
+    const st = f.dias[d.id], el = $("day-" + d.id);
+    if(!st || !st.modo){ el.classList.add("invalid"); ok = false; return; }
+    if(st.modo === "limites"){
+      const no = st.no.filter(l => abs(d, l.a) > abs(d, l.de)).sort((x, y) => abs(d, x.de) - abs(d, y.de));
+      if(no.length !== st.no.length){ ok = false; return; }
+      dias[d.id] = { modo:"limites", no:no.map(l => ({ de:l.de, a:l.a })) };
+    } else dias[d.id] = { modo:st.modo };
+  });
+  if(ok && S.config.dias.every(d => dias[d.id].modo === "nada")){ toast("Si no podéis ningún día, hablad con la organización.", true); return; }
+  if(!ok){ const first = document.querySelector(".invalid, .lim-err"); if(first) first.scrollIntoView({ behavior:"smooth", block:"center" }); return; }
   const prev = S.editId ? (S.mine[S.editId] || S.respuestas[S.editId]) : null, now = Date.now();
-  const data = { j1, j2, disp, notas:f.notas.trim(), creado:(prev && prev.creado) || now, actualizado:now };
+  const data = { j1, j2, dias, notas:f.notas.trim(), creado:(prev && prev.creado) || now, actualizado:now };
   const btn = $("submitBtn"); btn.disabled = true; btn.textContent = "Guardando…";
   try{
     const wasEdit = !!S.editId;
     const id = await withTimeout(backend.saveRespuesta(S.editId, data), 15000);
-    if(!(S.org && !wasEdit)){ addMine(id); S.mine[id] = data; }
-    S.done = { id, wasEdit, nombre:`${j1} – ${j2}`, n:Object.keys(disp).length };
+    if(!(S.org && !S.mine[id] && wasEdit)){ addMine(id); S.mine[id] = data; }
+    S.done = { id, wasEdit, nombre:`${j1} – ${j2}`, data };
     S.editId = null; S.form = blankForm();
     history.replaceState(null, "", link());
     renderMain(); window.scrollTo({ top:0, behavior:"smooth" });
@@ -559,7 +566,8 @@ function doneHtml(){
   return `<div class="card done">
     <div class="bigicon">${d.wasEdit ? "✏️" : "🎉"}</div>
     <h2>${d.wasEdit ? "Cambios guardados" : "¡Enviado!"}</h2>
-    <p class="sub" style="margin:0 auto;max-width:480px"><b>${esc(d.nombre)}</b>: ${d.n} franja${d.n === 1 ? "" : "s"}. Desde este móvil podéis cambiarlo cuando queráis. Desde otro móvil, con este enlace (es solo vuestro, no lo compartáis en el grupo):</p>
+    <p class="sub" style="margin:0 auto;max-width:480px"><b>${esc(d.nombre)}</b><br>${S.config.dias.map(x => `${esc(x.nombre)}: ${esc(dayText(d.data, x))}`).join("<br>")}</p>
+    <p class="sub" style="margin:12px auto 0;max-width:480px">Desde este móvil podéis cambiarlo cuando queráis. Desde otro, con este enlace (es solo vuestro, no lo pongáis en el grupo):</p>
     <div class="linkbox"><input type="text" id="editLink" readonly value="${esc(l)}"><button class="btn ghost small" id="copyLink">Copiar</button></div>
     <div class="actions" style="margin-top:14px">
       <a class="btn-wa" href="${esc(wa("Nuestra disponibilidad para el torneo de frontenis (para verla o cambiarla):\n" + l))}" target="_blank" rel="noopener">Mandárselo al compañero</a>
@@ -577,9 +585,11 @@ function bindDone(){
 function startEdit(id, p){
   if(!p){ toast("No encontramos esa respuesta (puede que se haya borrado).", true); return; }
   S.done = null; S.editId = id;
-  S.form = { j1:p.j1 || "", j2:p.j2 || "", disp:Object.assign({}, p.disp || {}), notas:p.notas || "" };
+  const dias = {};
+  S.config.dias.forEach(d => { const m = modeOf(p, d); if(m) dias[d.id] = { modo:m, no:limitsOf(p, d).map(l => ({ de:l.de, a:l.a })) }; });
+  S.form = { j1:p.j1 || "", j2:p.j2 || "", dias, notas:p.notas || "" };
   history.replaceState(null, "", link({ editar:id }));
-  setTab("disponibilidad"); window.scrollTo({ top:0 });
+  setTab("formulario"); window.scrollTo({ top:0 });
 }
 function cancelEdit(){ S.editId = null; S.form = blankForm(); history.replaceState(null, "", link()); renderMain(); }
 
@@ -609,61 +619,53 @@ function matchAll(){
     pares.forEach(p => { const s = [p.j1, p.j2].filter(n => n && playerHit(n, hay)).length; if(s > bestS){ best = p; bestS = s; } });
     if(best){ r.pareja = best; (byPair[best.id] = byPair[best.id] || []).push(r); } else unmatched.push(r);
   });
+  resp.sort((a,b) => ((a.pareja && a.pareja.num) || 999) - ((b.pareja && b.pareja.num) || 999));
   return { pares, resp, byPair, unmatched };
 }
-function heatColor(n, max){ if(!n) return "#b8c2bb"; const t = max ? n / max : 0; return t > .66 ? "#1f9d63" : t > .33 ? "#2a6b45" : "#b9850a"; }
+function heatColor(n, max){ if(!n) return "#c9d1cb"; const t = max ? n / max : 0; return t > .66 ? "#1f9d63" : t > .33 ? "#2a6b45" : "#b9850a"; }
 function renderRespuestas(){
   const sec = $("sec-respuestas");
-  if(!S.orgLoaded){ sec.innerHTML = `<div class="card empty">Cargando respuestas…</div>`; return; }
-  const { pares, resp, byPair, unmatched } = matchAll(), slots = allSlots();
-  const answered = pares.filter(p => byPair[p.id]).length, missing = pares.filter(p => !byPair[p.id]);
-  const counts = slots.map(s => resp.filter(r => (r.disp || {})[s.f.id]).length), max = Math.max(...counts, 0);
+  if(!S.orgLoaded){ sec.innerHTML = `<div class="card">Cargando respuestas…</div>`; return; }
+  const { pares, resp, byPair, unmatched } = matchAll();
+  const answered = pares.filter(p => byPair[p.id]).length, missing = pares.filter(p => !byPair[p.id]).length;
   let h = `<div class="card"><div class="form-head"><div><h2>${resp.length} respuesta${resp.length === 1 ? "" : "s"}</h2>
       <p class="sub" style="margin:2px 0 0">${pares.length ? `${answered} de ${pares.length} parejas del listado han respondido.` : "No hay listado de parejas cargado."} Solo lo ve la organización.</p></div>
       <button class="btn primary small" id="csvBtn" ${resp.length ? "" : "disabled"}>Descargar Excel (CSV)</button></div>
       ${pares.length ? `<div class="progress"><i style="width:${Math.round(100 * answered / pares.length)}%"></i></div>` : ""}</div>`;
+  if(resp.length){
+    h += `<h3 class="h3">Cuántas parejas pueden jugar a cada hora</h3><div class="cov">` + S.config.dias.map(d => {
+      const [a, b] = dayRange(d), rows = [];
+      for(let t = a; t < b; t += STEP){ const n = resp.filter(r => canPlay(r, d, t)).length; rows.push([t, n]); }
+      return `<div class="covday"><h4>${esc(d.nombre)} ${esc(d.fecha)}</h4>` + rows.map(([t, n]) => `<div class="bar"><span class="t">${fromMin(t)}</span><span class="b"><i style="width:${resp.length ? Math.round(100 * n / resp.length) : 0}%;background:${heatColor(n, resp.length)}"></i></span><span class="n">${n}</span></div>`).join("") + `</div>`;
+    }).join("") + `</div>`;
+  }
   if(pares.length){
-    h += `<div class="card"><div class="form-head"><div><h3>Listado de parejas</h3><p class="sub" style="margin:0">Se cruza por nombre; si alguien lo escribió distinto, sale abajo como «sin cruzar».</p></div>
-      ${missing.length ? `<a class="btn-wa" target="_blank" rel="noopener" href="${esc(wa(`Recordatorio 🏆 ${S.config.titulo}: si todavía no habéis rellenado vuestra disponibilidad, es un minuto 👇\n${link()}`))}">Recordatorio al grupo</a>` : ""}</div>
+    h += `<h3 class="h3">Listado de parejas</h3><div class="card"><div class="form-head"><p class="sub" style="margin:0">Se cruza por nombre; si alguien lo escribió distinto, sale abajo como «sin cruzar».</p>
+      ${missing ? `<a class="btn-wa" target="_blank" rel="noopener" href="${esc(wa(`Recordatorio 🏆 ${S.config.titulo}: si todavía no nos habéis dicho cuándo podéis jugar, es un minuto 👇\n${link()}`))}">Recordatorio al grupo</a>` : ""}</div>
       <div style="height:10px"></div><div class="lst">` +
       pares.map(p => { const rs = byPair[p.id]; return `<div class="li${rs ? " ok" : ""}"><span class="no">${p.num || "—"}</span><div>${esc(names(p))}${p.cabeza ? ` <small style="display:inline">· cabeza ${p.cabeza}</small>` : ""}
-        <small>${rs ? `<span class="ok-t">✓ ${countDisp(rs[rs.length-1])} franjas</span>${rs.length > 1 ? ` · ${rs.length} respuestas` : ""}` : `<span class="x-t">Falta</span>`}</small></div></div>`; }).join("") +
+        <small>${rs ? `<span class="ok-t">✓ Respondida</span>${rs.length > 1 ? ` · ${rs.length} respuestas` : ""}` : `<span class="x-t">Falta</span>`}</small></div></div>`; }).join("") +
       `</div></div>`;
   }
+  if(unmatched.length && pares.length) h += `<div class="banner warn">${unmatched.length} respuesta${unmatched.length === 1 ? "" : "s"} sin cruzar con el listado: ${unmatched.map(r => esc(names(r))).join(" · ")}.</div>`;
   if(resp.length){
-    const dayHead = S.config.dias.map(d => `<th colspan="${d.franjas.length || 1}">${esc(d.nombre)} ${esc(d.fecha)}</th>`).join("");
-    const slotHead = S.config.dias.map(d => d.franjas.length ? d.franjas.map(f => `<th>${esc(f.hora)}</th>`).join("") : "<th>—</th>").join("");
-    const row = r => `<tr><td class="pn" title="${esc(names(r))}">${r.pareja ? r.pareja.num + ". " : ""}${esc(names(r))}</td>` +
-      S.config.dias.map(d => d.franjas.length ? d.franjas.map(f => (r.disp || {})[f.id] ? `<td class="s1">✓</td>` : "<td></td>").join("") : "<td></td>").join("") + `</tr>`;
-    let i = 0;
-    const foot = S.config.dias.map(d => d.franjas.length ? d.franjas.map(() => { const n = counts[i++]; return `<td><span class="heat" style="background:${heatColor(n,max)}">${n}</span></td>`; }).join("") : "<td></td>").join("");
-    const sorted = resp.slice().sort((a,b) => ((a.pareja && a.pareja.num) || 999) - ((b.pareja && b.pareja.num) || 999));
-    h += `<h3 class="h3">Quién puede cuándo</h3><div class="matrix-wrap"><table class="matrix"><thead><tr><th class="pn" rowspan="2">Pareja</th>${dayHead}</tr><tr>${slotHead}</tr></thead>
-      <tbody>${sorted.map(row).join("")}</tbody><tfoot><tr><td class="pn">Pueden</td>${foot}</tr></tfoot></table></div>`;
-    h += `<h3 class="h3">Por franja</h3><div class="slot-sum">` + slots.map((s, k) => {
-      const who = sorted.filter(r => (r.disp || {})[s.f.id]);
-      return `<div class="ss"><div class="h"><span>${esc(s.dia.nombre)} · ${esc(s.f.hora)}</span><span class="heat" style="background:${heatColor(counts[k],max)}">${counts[k]}</span></div>
-        <div class="who">${who.map(r => (r.pareja ? r.pareja.num + ". " : "") + esc(r.j1)).join(" · ") || "Nadie"}</div></div>`;
-    }).join("") + `</div>`;
-    h += `<h3 class="h3">Respuestas</h3><div class="rcards">` + resp.slice().reverse().map(r => `<div class="rcard">
-      <div class="n">${esc(names(r))}</div>
-      ${r.pareja ? `<span class="tag ok">Pareja ${r.pareja.num} del listado</span>` : `<span class="tag warn">Sin cruzar con el listado</span>`}
-      <div class="meta">${countDisp(r)} franjas · ${esc(fmtTs(r.actualizado))}</div>
+    h += `<h3 class="h3">Respuestas</h3><div class="rcards">` + resp.map(r => `<div class="rcard">
+      <div class="n">${r.pareja ? r.pareja.num + ". " : ""}${esc(names(r))}</div>
+      ${r.pareja ? "" : `<span class="tag warn">Sin cruzar con el listado</span>`}
+      <div class="d">${S.config.dias.map(d => `<b>${esc(d.nombre)}:</b> ${esc(dayText(r, d))}`).join("<br>")}</div>
       ${r.notas ? `<div class="notes">${esc(r.notas)}</div>` : ""}
+      <div class="meta">${esc(fmtTs(r.actualizado))}</div>
       <div class="acts"><button class="btn ghost small" data-oedit="${esc(r.id)}">Modificar</button><button class="btn danger small" data-odel="${esc(r.id)}">Borrar</button></div></div>`).join("") + `</div>`;
-  } else h += `<div class="card empty">Todavía no ha respondido nadie.</div>`;
-  if(unmatched.length && pares.length) h += `<div class="banner warn" style="margin-top:14px">${unmatched.length} respuesta${unmatched.length === 1 ? "" : "s"} sin cruzar con el listado: ${unmatched.map(r => esc(names(r))).join(" · ")}.</div>`;
+  } else h += `<div class="card">Todavía no ha respondido nadie.</div>`;
   sec.innerHTML = h;
-  const csv = $("csvBtn"); if(csv) csv.onclick = () => downloadCsv(sorted2());
+  const csv = $("csvBtn"); if(csv) csv.onclick = () => downloadCsv(matchAll().resp);
   sec.querySelectorAll("[data-oedit]").forEach(b => b.onclick = () => startEdit(b.dataset.oedit, S.respuestas[b.dataset.oedit]));
   sec.querySelectorAll("[data-odel]").forEach(b => b.onclick = () => askDelete(b.dataset.odel));
-  function sorted2(){ return matchAll().resp.sort((a,b) => ((a.pareja && a.pareja.num) || 999) - ((b.pareja && b.pareja.num) || 999)); }
 }
 function downloadCsv(resp){
-  const slots = allSlots();
   const cell = v => { const s = String(v == null ? "" : v); return /[;"\n\r]/.test(s) ? `"${s.replace(/"/g,'""')}"` : s; };
-  const head = ["N.º listado","Jugador 1","Jugador 2"].concat(slots.map(s => `${s.dia.nombre} ${s.f.hora}`), ["Franjas","Observaciones","Enviada"]);
-  const rows = resp.map(r => [r.pareja ? r.pareja.num : "", r.j1, r.j2].concat(slots.map(s => (r.disp || {})[s.f.id] ? "Sí" : ""), [countDisp(r), r.notas || "", fmtTs(r.actualizado)]));
+  const head = ["N.º listado","Jugador 1","Jugador 2"].concat(S.config.dias.map(d => d.nombre), ["Observaciones","Enviada"]);
+  const rows = resp.map(r => [r.pareja ? r.pareja.num : "", r.j1, r.j2].concat(S.config.dias.map(d => dayText(r, d)), [r.notas || "", fmtTs(r.actualizado)]));
   const csv = "﻿" + [head].concat(rows).map(r => r.map(cell).join(";")).join("\r\n");
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([csv], { type:"text/csv;charset=utf-8" }));
@@ -677,7 +679,7 @@ function renderAjustes(){
   if(!draft) draft = JSON.parse(JSON.stringify(S.config));
   const d = draft, sec = $("sec-ajustes");
   sec.innerHTML = `
-  <div class="card"><h2>Datos del torneo</h2><p class="sub">Se aplican al momento para todos. Si quitas una franja, las respuestas que la marcaron dejan de contarla.</p>
+  <div class="card"><h2>Datos del torneo</h2><p class="sub">Se aplican al momento para todos.</p>
     ${S.configFromDb ? "" : `<div class="banner warn">Ahora se ven los valores por defecto del código. Al guardar quedarán en la base de datos.</div>`}
     <div class="field"><label>Título <span class="hint">(lo de después de «·» sale grande en la cabecera)</span></label><input type="text" id="cTitulo" maxlength="80" value="${esc(d.titulo)}"></div>
     <div class="row2">
@@ -694,17 +696,15 @@ function renderAjustes(){
     </div>
     <div class="field"><label>Aviso para todos <span class="hint">(opcional, sale arriba)</span></label><input type="text" id="cAviso" maxlength="200" value="${esc(d.aviso)}"></div>
   </div>
-  <div class="card"><h2>Días y franjas</h2><p class="sub">Una franja por línea, tal como queréis que se vea (ej.: <code>18:00 – 21:00</code>).</p>
+  <div class="card"><h2>Días y horario de juego</h2><p class="sub">Las parejas eligen sus horas dentro de este horario, de ${STEP} en ${STEP} minutos. Si la hora final es menor que la inicial, se entiende que acaba de madrugada.</p>
     <div id="cDias">${d.dias.map((dia, i) => `
-      <div class="cfg-day" data-i="${i}">
-        <div class="row3">
-          <div class="field" style="margin:0"><label>Día</label><input type="text" data-k="nombre" value="${esc(dia.nombre)}" placeholder="Sábado"></div>
-          <div class="field" style="margin:0"><label>Fecha</label><input type="text" data-k="fecha" value="${esc(dia.fecha)}" placeholder="9 de enero"></div>
-          <button class="btn danger small" data-rmday="${i}">Quitar día</button>
-        </div>
-        <div class="field" style="margin:10px 0 0"><label>Nota <span class="hint">(opcional)</span></label><input type="text" data-k="nota" value="${esc(dia.nota)}"></div>
-        <div class="field" style="margin:10px 0 0"><label>Franjas</label><textarea data-k="franjas" rows="${Math.max(3, dia.franjas.length)}">${esc(dia.franjas.map(f => f.hora).join("\n"))}</textarea></div>
-      </div>`).join("")}</div>
+      <div class="cfg-day" data-i="${i}"><div class="row4">
+        <div class="field" style="margin:0"><label>Día</label><input type="text" data-k="nombre" value="${esc(dia.nombre)}" placeholder="Sábado"></div>
+        <div class="field" style="margin:0"><label>Fecha</label><input type="text" data-k="fecha" value="${esc(dia.fecha)}" placeholder="9 de enero"></div>
+        <div class="field" style="margin:0"><label>Desde</label><input type="text" data-k="desde" value="${esc(dia.desde)}" placeholder="15:00"></div>
+        <div class="field" style="margin:0"><label>Hasta</label><input type="text" data-k="hasta" value="${esc(dia.hasta)}" placeholder="02:00"></div>
+        <button class="btn danger small" data-rmday="${i}">Quitar</button>
+      </div></div>`).join("")}</div>
     <button class="btn ghost small" id="cAddDay">+ Añadir día</button>
   </div>
   <div class="actions"><button class="btn primary" id="cSave">Guardar ajustes</button><button class="btn ghost" id="cReset">Descartar cambios</button></div>`;
@@ -712,52 +712,19 @@ function renderAjustes(){
     const v = id => $(id).value.trim();
     d.titulo = v("cTitulo"); d.fechas = v("cFechas"); d.lugar = v("cLugar"); d.plazas = v("cPlazas"); d.precio = v("cPrecio"); d.incluye = v("cIncluye");
     d.fechaLimite = $("cLimite").value; d.abierta = $("cAbierta").checked; d.aviso = v("cAviso");
-    sec.querySelectorAll(".cfg-day").forEach(el => {
-      const dia = d.dias[+el.dataset.i], g = k => el.querySelector(`[data-k="${k}"]`).value.trim();
-      dia.nombre = g("nombre"); dia.fecha = g("fecha"); dia.nota = g("nota");
-      const horas = el.querySelector('[data-k="franjas"]').value.split("\n").map(s => s.trim()).filter(Boolean), old = dia.franjas.slice();
-      dia.franjas = horas.map(hh => { const k = old.findIndex(o => o.hora === hh); return k >= 0 ? old.splice(k,1)[0] : { id: uid(dia.id + "f"), hora: hh }; });
-    });
+    sec.querySelectorAll(".cfg-day").forEach(el => { const dia = d.dias[+el.dataset.i]; ["nombre","fecha","desde","hasta"].forEach(k => dia[k] = el.querySelector(`[data-k="${k}"]`).value.trim()); });
   };
   sec.querySelectorAll("[data-rmday]").forEach(b => b.onclick = () => { sync(); d.dias.splice(+b.dataset.rmday, 1); renderAjustes(); });
-  $("cAddDay").onclick = () => { sync(); d.dias.push({ id: uid("d"), nombre:"", fecha:"", nota:"", franjas:[] }); renderAjustes(); };
+  $("cAddDay").onclick = () => { sync(); d.dias.push({ id: uid("d"), nombre:"", fecha:"", desde:"10:00", hasta:"22:00" }); renderAjustes(); };
   $("cReset").onclick = () => { draft = null; renderAjustes(); };
   $("cSave").onclick = async () => {
     sync();
+    const hhmm = /^([01]\d|2[0-3]):(00|30)$/;
     if(d.dias.some(x => !x.nombre)){ toast("Pon nombre a todos los días.", true); return; }
+    if(d.dias.some(x => !hhmm.test(x.desde) || !hhmm.test(x.hasta))){ toast("Las horas van como 15:00 o 15:30.", true); return; }
     try{ await withTimeout(backend.saveConfig(JSON.parse(JSON.stringify(d))), 15000); draft = null; toast("Ajustes guardados"); }
     catch(e){ toast("No se han podido guardar: " + errText(e), true); }
   };
-}
-
-/* ======================= Reglas (las del III Verano) ======================= */
-function renderReglas(){
-  $("sec-reglas").innerHTML = `<div class="banner info">Reglamento del III Verano. La organización puede ajustarlo para el invierno.</div><div class="rules">
-  <div class="rule"><div class="rule-h">Saque y juego</div><div class="rule-b">
-    <p>Saque del 3 al 5. Si la pelota pasa del 5 se contará como <b>«media»</b>, con una oportunidad adicional; si no pasa del 3 se contará como <b>«mala»</b>.</p>
-    <p>No se aplicará la regla del doble bote en todo el torneo. Todas las líneas cuentan como malas.</p>
-    <p>Si recibo un pelotazo por debajo de la cintura, es punto mío. Si lo recibo de cintura para arriba, «vueltas».</p>
-    <p>Si un jugador llega justo a una bola y suelta la raqueta para golpearla, es punto perdido. Si se tira a por la pelota, le da sin soltar la raqueta y solo la suelta después por seguridad, el punto es válido.</p></div></div>
-  <div class="rule"><div class="rule-h">Puntuación por fase</div><div class="rule-b">
-    <table class="score"><thead><tr><th>Fase</th><th>Puntos</th><th>Tiempo</th></tr></thead><tbody>
-      <tr><td>Fase de grupos</td><td>15</td><td>—</td></tr><tr><td>Octavos</td><td>18</td><td>20 min</td></tr>
-      <tr><td>Cuartos</td><td>22</td><td>25 min</td></tr><tr><td>Semifinales</td><td>22</td><td>30 min</td></tr><tr><td>Final</td><td>22</td><td>40 min</td></tr></tbody></table>
-    <p>Todos los partidos se resuelven con dos puntos de diferencia. Si al pitar el final hay un punto de diferencia, ese punto se termina; si la pareja que perdía empata, se juega un <b>punto decisivo</b>.</p></div></div>
-  <div class="rule"><div class="rule-h">Antes del partido</div><div class="rule-b">
-    <p>Acudid <b>30 minutos antes</b> de vuestro partido.</p>
-    <p>Llegar <b>5 minutos tarde</b> supone perder el partido 15-0.</p>
-    <p>Se juega con pelotas <b>Dunlop</b> que pone la organización.</p></div></div>
-  <div class="rule"><div class="rule-h">Arbitraje</div><div class="rule-b">
-    <p>Los ganadores de cada partido arbitran el siguiente: uno arbitra y el otro lleva el marcador. Se respeta la decisión de los árbitros.</p></div></div>
-  <div class="rule"><div class="rule-h">Lesiones y sustituciones</div><div class="rule-b">
-    <p>La organización no se hace responsable de posibles lesiones.</p>
-    <p>Un lesionado puede sustituirse por un jugador ajeno al torneo <b>solo en fase de grupos</b>.</p></div></div>
-  <div class="rule"><div class="rule-h">Desempates en fase de grupos</div><div class="rule-b"><ol>
-    <li>Enfrentamientos directos entre los empatados.</li>
-    <li>Diferencial de puntos en los partidos entre los empatados.</li>
-    <li>En triple empate, cuentan todos los partidos del grupo.</li>
-    <li>Si sigue el empate, total de puntos a favor.</li></ol></div></div>
-  </div>`;
 }
 
 /* ======================= Acceso organización (Google) ======================= */
@@ -767,7 +734,7 @@ $("orgBtn").onclick = async () => {
 };
 document.querySelectorAll("[data-close]").forEach(b => b.onclick = () => $(b.dataset.close).classList.remove("show"));
 document.querySelectorAll(".overlay").forEach(o => o.addEventListener("click", e => { if(e.target === o) o.classList.remove("show"); }));
-$("tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if(!b) return; if(b.dataset.tab === "disponibilidad" && S.tab === "disponibilidad") S.done = null; setTab(b.dataset.tab); });
+$("tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if(!b) return; if(b.dataset.tab === "formulario" && S.tab === "formulario") S.done = null; setTab(b.dataset.tab); });
 
 /* ======================= Arranque ======================= */
 let backend;
@@ -787,7 +754,7 @@ if(backend){
     S.configFromDb = !!c; S.config = fillConfig(c);
     renderHero(); renderBanner();
     if(changed){
-      if(S.tab === "disponibilidad" && !S.done) renderMain();
+      if(S.tab === "formulario" && !S.done) renderMain();
       if(S.tab === "respuestas") renderRespuestas();
       if(S.tab === "ajustes"){ draft = null; renderAjustes(); }
     }
@@ -803,9 +770,9 @@ if(backend){
         p => { S.parejas = p; if(S.tab === "respuestas") renderRespuestas(); },
         e => { S.orgError = e; S.orgLoaded = true; renderBanner(); if(S.tab === "respuestas") renderRespuestas(); });
       toast("Organización: " + u.email);
-      if(S.tab === "disponibilidad" && !S.editId) setTab("respuestas");
+      if(!S.editId) setTab("respuestas");
     }
-    if(!S.org && wasOrg){ backend.unwatchOrg(); S.respuestas = {}; S.parejas = {}; S.orgLoaded = false; setTab(S.tab); }
+    if(!S.org && wasOrg){ backend.unwatchOrg(); S.respuestas = {}; S.parejas = {}; S.orgLoaded = false; setTab("formulario"); }
     renderOrgUi(); renderBanner(); renderHero();
   });
   /* Respuestas de este móvil y la del enlace ?editar=…, leídas una a una por su id */
@@ -816,11 +783,11 @@ if(backend){
       try{ const p = await withTimeout(backend.getRespuesta(id), 10000); if(p) S.mine[id] = p; else delMine(id); }catch(e){}
     }
     if(editar && S.mine[editar]){ addMine(editar); startEdit(editar, S.mine[editar]); }
-    else { if(editar) toast("No encontramos esa respuesta (puede que se haya borrado).", true); if(S.tab === "disponibilidad" && !S.done && !S.editId) renderMain(); }
+    else { if(editar) toast("No encontramos esa respuesta (puede que se haya borrado).", true); if(S.tab === "formulario" && !S.done && !S.editId) renderMain(); }
   })();
 }
 
-renderOrgUi(); renderHero(); renderBanner(); renderStatus(); setTab("disponibilidad");
+renderOrgUi(); renderHero(); renderBanner(); renderStatus(); setTab("formulario");
 })();
 </script>
 </body>
