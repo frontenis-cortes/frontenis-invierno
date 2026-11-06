@@ -61,7 +61,7 @@ button{cursor:pointer}
 .poster img{max-width:100%;max-height:82vh;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
 
 /* ---------- Pestañas (solo organización) ---------- */
-.tabs-bar{position:sticky;top:0;z-index:20;background:rgba(241,243,238,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs-bar{position:sticky;top:0;z-index:20;background:rgba(241,243,238,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .tabs-bar[hidden]{display:none}
 .tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:8px 0}
 .tabs::-webkit-scrollbar{display:none}
@@ -619,24 +619,29 @@ function matchAll(){
     pares.forEach(p => { const s = [p.j1, p.j2].filter(n => n && playerHit(n, hay)).length; if(s > bestS){ best = p; bestS = s; } });
     if(best){ r.pareja = best; (byPair[best.id] = byPair[best.id] || []).push(r); } else unmatched.push(r);
   });
-  resp.sort((a,b) => ((a.pareja && a.pareja.num) || 999) - ((b.pareja && b.pareja.num) || 999));
-  return { pares, resp, byPair, unmatched };
+  /* Si una pareja respondió más de una vez (p. ej. desde dos móviles), vale la más reciente; las demás quedan «superadas» */
+  const groups = {};
+  resp.forEach(r => { const k = r.pareja ? "p:" + r.pareja.id : "n:" + toks(`${r.j1} ${r.j2}`).sort().join(" "); (groups[k] = groups[k] || []).push(r); });
+  Object.values(groups).forEach(g => { g.sort((a,b) => (b.actualizado||0) - (a.actualizado||0)); g.slice(1).forEach(r => { r.superada = true; }); });
+  resp.sort((a,b) => ((a.pareja && a.pareja.num) || 999) - ((b.pareja && b.pareja.num) || 999) || (b.actualizado||0) - (a.actualizado||0));
+  return { pares, resp, byPair, unmatched, vigentes: resp.filter(r => !r.superada) };
 }
 function heatColor(n, max){ if(!n) return "#c9d1cb"; const t = max ? n / max : 0; return t > .66 ? "#1f9d63" : t > .33 ? "#2a6b45" : "#b9850a"; }
 function renderRespuestas(){
   const sec = $("sec-respuestas");
   if(!S.orgLoaded){ sec.innerHTML = `<div class="card">Cargando respuestas…</div>`; return; }
-  const { pares, resp, byPair, unmatched } = matchAll();
-  const answered = pares.filter(p => byPair[p.id]).length, missing = pares.filter(p => !byPair[p.id]).length;
-  let h = `<div class="card"><div class="form-head"><div><h2>${resp.length} respuesta${resp.length === 1 ? "" : "s"}</h2>
+  const { pares, resp, byPair, unmatched, vigentes } = matchAll();
+  const answered = pares.filter(p => byPair[p.id]).length, missing = pares.filter(p => !byPair[p.id]).length, dup = resp.length - vigentes.length;
+  let h = `<div class="card"><div class="form-head"><div><h2>${vigentes.length === 1 ? "1 pareja ha respondido" : vigentes.length + " parejas han respondido"}</h2>
       <p class="sub" style="margin:2px 0 0">${pares.length ? `${answered} de ${pares.length} parejas del listado han respondido.` : "No hay listado de parejas cargado."} Solo lo ve la organización.</p></div>
       <button class="btn primary small" id="csvBtn" ${resp.length ? "" : "disabled"}>Descargar Excel (CSV)</button></div>
-      ${pares.length ? `<div class="progress"><i style="width:${Math.round(100 * answered / pares.length)}%"></i></div>` : ""}</div>`;
-  if(resp.length){
+      ${pares.length ? `<div class="progress"><i style="width:${Math.round(100 * answered / pares.length)}%"></i></div>` : ""}
+      ${dup ? `<p class="sub" style="margin:8px 0 0">${dup} respuesta${dup === 1 ? "" : "s"} repetida${dup === 1 ? "" : "s"} (la misma pareja más de una vez): solo cuenta la más reciente.</p>` : ""}</div>`;
+  if(vigentes.length){
     h += `<h3 class="h3">Cuántas parejas pueden jugar a cada hora</h3><div class="cov">` + S.config.dias.map(d => {
       const [a, b] = dayRange(d), rows = [];
-      for(let t = a; t < b; t += STEP){ const n = resp.filter(r => canPlay(r, d, t)).length; rows.push([t, n]); }
-      return `<div class="covday"><h4>${esc(d.nombre)} ${esc(d.fecha)}</h4>` + rows.map(([t, n]) => `<div class="bar"><span class="t">${fromMin(t)}</span><span class="b"><i style="width:${resp.length ? Math.round(100 * n / resp.length) : 0}%;background:${heatColor(n, resp.length)}"></i></span><span class="n">${n}</span></div>`).join("") + `</div>`;
+      for(let t = a; t < b; t += STEP){ const n = vigentes.filter(r => canPlay(r, d, t)).length; rows.push([t, n]); }
+      return `<div class="covday"><h4>${esc(d.nombre)} ${esc(d.fecha)}</h4>` + rows.map(([t, n]) => `<div class="bar"><span class="t">${fromMin(t)}</span><span class="b"><i style="width:${Math.round(100 * n / vigentes.length)}%;background:${heatColor(n, vigentes.length)}"></i></span><span class="n">${n}</span></div>`).join("") + `</div>`;
     }).join("") + `</div>`;
   }
   if(pares.length){
@@ -644,13 +649,14 @@ function renderRespuestas(){
       ${missing ? `<a class="btn-wa" target="_blank" rel="noopener" href="${esc(wa(`Recordatorio 🏆 ${S.config.titulo}: si todavía no nos habéis dicho cuándo podéis jugar, es un minuto 👇\n${link()}`))}">Recordatorio al grupo</a>` : ""}</div>
       <div style="height:10px"></div><div class="lst">` +
       pares.map(p => { const rs = byPair[p.id]; return `<div class="li${rs ? " ok" : ""}"><span class="no">${p.num || "—"}</span><div>${esc(names(p))}${p.cabeza ? ` <small style="display:inline">· cabeza ${p.cabeza}</small>` : ""}
-        <small>${rs ? `<span class="ok-t">✓ Respondida</span>${rs.length > 1 ? ` · ${rs.length} respuestas` : ""}` : `<span class="x-t">Falta</span>`}</small></div></div>`; }).join("") +
+        <small>${rs ? `<span class="ok-t">✓ Respondida</span>${rs.length > 1 ? ` · ${rs.length} veces (vale la última)` : ""}` : `<span class="x-t">Falta</span>`}</small></div></div>`; }).join("") +
       `</div></div>`;
   }
   if(unmatched.length && pares.length) h += `<div class="banner warn">${unmatched.length} respuesta${unmatched.length === 1 ? "" : "s"} sin cruzar con el listado: ${unmatched.map(r => esc(names(r))).join(" · ")}.</div>`;
   if(resp.length){
     h += `<h3 class="h3">Respuestas</h3><div class="rcards">` + resp.map(r => `<div class="rcard">
       <div class="n">${r.pareja ? r.pareja.num + ". " : ""}${esc(names(r))}</div>
+      ${r.superada ? `<span class="tag warn">Superada: hay una más reciente de esta pareja</span>` : ""}
       ${r.pareja ? "" : `<span class="tag warn">Sin cruzar con el listado</span>`}
       <div class="d">${S.config.dias.map(d => `<b>${esc(d.nombre)}:</b> ${esc(dayText(r, d))}`).join("<br>")}</div>
       ${r.notas ? `<div class="notes">${esc(r.notas)}</div>` : ""}
@@ -658,7 +664,7 @@ function renderRespuestas(){
       <div class="acts"><button class="btn ghost small" data-oedit="${esc(r.id)}">Modificar</button><button class="btn danger small" data-odel="${esc(r.id)}">Borrar</button></div></div>`).join("") + `</div>`;
   } else h += `<div class="card">Todavía no ha respondido nadie.</div>`;
   sec.innerHTML = h;
-  const csv = $("csvBtn"); if(csv) csv.onclick = () => downloadCsv(matchAll().resp);
+  const csv = $("csvBtn"); if(csv) csv.onclick = () => downloadCsv(matchAll().vigentes);
   sec.querySelectorAll("[data-oedit]").forEach(b => b.onclick = () => startEdit(b.dataset.oedit, S.respuestas[b.dataset.oedit]));
   sec.querySelectorAll("[data-odel]").forEach(b => b.onclick = () => askDelete(b.dataset.odel));
 }
