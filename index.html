@@ -370,8 +370,7 @@ function makeFirebase(){
 }
 function makeLocal(){
   const read = () => lsGet(LS_DEMO, { config:null, respuestas:{}, parejas:{
-    p01:{num:1,j1:"Unai Rupérez",j2:"Mikel Pascual"}, p02:{num:2,j1:"Jorge Pascual",j2:"Saúl Cuairán",cabeza:1}, p03:{num:3,j1:"Saúl Choleta",j2:"Juan Castán"},
-    p08:{num:8,j1:"Alfredo Martín",j2:""}, p33:{num:33,j1:"Javier Borobia",j2:"Gonzalo Continente"} } });
+    p01:{num:1,j1:"Ana Prueba",j2:"Bea Ejemplo"}, p02:{num:2,j1:"Carlos Demo",j2:"Dani Ficticio",cabeza:1}, p03:{num:3,j1:"Eva Muestra",j2:"Fer Inventado"} } });
   let cfgCb = null, orgCbs = null, authCb = null;
   const emit = () => { const d = read(); if(cfgCb) cfgCb(d.config); if(orgCbs){ orgCbs[0](d.respuestas || {}); orgCbs[1](d.parejas || {}); } };
   const write = fn => { const d = read(); fn(d); lsSet(LS_DEMO, d); setTimeout(emit, 0); };
