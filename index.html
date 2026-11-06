@@ -460,7 +460,7 @@ function renderMain(){
   }
   h += `<div class="card"><div class="form-head"><div>
       <h2>${editing ? "Modificar vuestra disponibilidad" : "¿Cuándo podéis jugar?"}</h2>
-      <p class="sub" style="margin:4px 0 0">${editing ? "Cambiad lo que necesitéis y guardad." : "Poned los nombres de la pareja y, para cada día, decidnos si hay horas en las que <b>no podéis</b>. Basta con que lo rellene uno. Solo lo ve la organización."}</p></div>
+      <p class="sub" style="margin:4px 0 0">${editing ? "Cambiad lo que necesitéis y guardad." : "Poned los nombres de la pareja y, para cada día, decidnos si hay horas en las que <b>no podéis</b>. Basta con que lo rellene uno. Si más adelante necesitáis cambiar algo, volved a rellenarlo: vale la última respuesta."}</p></div>
       ${editing ? `<button class="btn ghost small" id="cancelEdit">Cancelar</button>` : ""}</div><div style="height:12px"></div>`;
   if(!open) h += `<div class="banner err">El plazo está cerrado. Si necesitáis cambiar algo, hablad con la organización.</div>`;
   else if(S.config.fechaLimite) h += `<div class="banner warn">Tenéis hasta el <b>${esc(fmtDate(S.config.fechaLimite))}</b>.</div>`;
